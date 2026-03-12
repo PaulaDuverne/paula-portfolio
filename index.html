@@ -744,6 +744,290 @@ background: transparent !important;
 }
 </style>
 
+
+<style id="mobile-optimization-overrides">
+html, body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+  nav {
+    padding: 0.85rem 1rem;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-logo {
+    flex: 1 1 100%;
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links li {
+    flex: 0 0 auto;
+  }
+
+  .nav-links a {
+    white-space: nowrap;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-resume {
+    padding: 0.45rem 0.8rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 118px;
+  }
+
+  .hero-left {
+    padding: 3rem 1.25rem 2.25rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.7rem, 15vw, 4rem);
+    line-height: 0.95;
+  }
+
+  .hero-title {
+    font-size: 1rem;
+    line-height: 1.45;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-bio {
+    max-width: none;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .hero-right {
+    min-height: auto;
+  }
+
+  .hero-photo-wrap {
+    min-height: 320px;
+  }
+
+  .hero-photo-wrap img {
+    object-position: center 18%;
+  }
+
+  .hero-stats {
+    padding: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-cell {
+    padding: 1rem;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.62rem;
+    line-height: 1.45;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .section-inner {
+    padding: 0 1.25rem;
+  }
+
+  .section-header {
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 9vw, 2.35rem);
+  }
+
+  .impact-item {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 1.35rem 1.15rem;
+  }
+
+  .impact-metric {
+    font-size: 1.9rem;
+  }
+
+  .template-card {
+    padding: 1.25rem 1.15rem;
+    align-items: flex-start;
+  }
+
+  .template-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .insights-carousel {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .insights-carousel .work-card {
+    box-shadow: none;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .technology-intro {
+    font-size: 0.92rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .technology-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  .technology-card {
+    height: 86px;
+    min-height: 86px;
+    padding: 16px;
+  }
+
+  .tech-logo {
+    max-width: 118px;
+    max-height: 40px;
+  }
+
+  .about-copy p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
+
+  .creds-list li {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cred-company {
+    min-width: 0;
+  }
+
+  .cred-badge {
+    margin-left: 0;
+  }
+
+  .contact-copy {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 560px) {
+  nav {
+    padding: 0.8rem 0.9rem;
+  }
+
+  .hero {
+    padding-top: 126px;
+  }
+
+  .hero-left {
+    padding: 2.65rem 1rem 2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.45rem, 17vw, 3.5rem);
+  }
+
+  .hero-title {
+    font-size: 0.95rem;
+  }
+
+  .hero-bio {
+    font-size: 0.92rem;
+  }
+
+  .hero-photo-wrap {
+    min-height: 280px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .section-inner {
+    padding: 0 1rem;
+  }
+
+  .section-header {
+    gap: 0.75rem;
+  }
+
+  .section-num {
+    font-size: 0.8rem;
+  }
+
+  .impact-item {
+    padding: 1.2rem 1rem;
+  }
+
+  .work-card,
+  .template-card {
+    padding: 1.15rem 1rem;
+  }
+
+  .insights-carousel-topbar {
+    gap: 0.8rem;
+  }
+
+  .technology-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .technology-card {
+    height: 82px;
+    min-height: 82px;
+  }
+
+  .contact-links {
+    width: 100%;
+  }
+
+  .contact-links .btn {
+    width: 100%;
+  }
+}
+</style>
+
 </head>
 <body>
 
