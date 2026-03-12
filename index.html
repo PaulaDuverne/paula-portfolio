@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paula R. Duverne | P27 & Co · People & Talent Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:      #180a10;
+      --wine:     #2e1520;
+      --merlot:   #5c2535;
+      --blush:    #a06070;
+      --sage:     #6a9a78;
+      --warm:     #faf6f4;
+      --cream:    #faf6f4;
+      --accent:   #a06070;
+      --accent2:  #6a9a78;
+      --muted:    #7a5060;
+      --rule:     #e8d8dc;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(250,246,244,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+      border-right: 1px solid var(--rule);
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--merlot);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--merlot);
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      margin-bottom: 2.5rem;
+    }
+    .hero-bio {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #4a443e;
+      max-width: 42ch;
+      margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--wine);
+      color: var(--warm);
+      border: 1px solid var(--wine);
+    }
+    .btn-primary:hover { background: var(--merlot); border-color: var(--merlot); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-secondary:hover { border-color: var(--blush); color: var(--merlot); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem;
+      background: var(--wine);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 60px solid rgba(160,96,112,0.15);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(160,96,112,0.3);
+      border: 1px solid rgba(160,96,112,0.3);
+      position: relative; z-index: 1;
+    }
+    .stat-cell {
+      background: var(--merlot);
+      padding: 2rem 1.75rem;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--blush);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(250,246,244,0.6);
+      text-transform: uppercase;
+    }
+    .hero-quote {
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(160,96,112,0.35);
+      position: relative; z-index: 1;
+    }
+    .hero-quote p {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: rgba(250,246,244,0.75);
+    }
+    .hero-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blush);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 0; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .section-num {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--blush);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── WORK / MEMOS ── */
+    .work-section { background: white; }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .work-card {
+      background: white;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .work-card:hover { background: var(--cream); }
+    .work-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 1.25rem;
+    }
+    .work-card-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .work-card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+    .work-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+    }
+    .work-org {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .work-arrow {
+      font-size: 1.1rem;
+      color: var(--blush);
+      transition: transform 0.2s;
+    }
+    .work-card:hover .work-arrow { transform: translateX(4px); }
+
+    /* ── IMPACT ── */
+    .impact-section { background: var(--warm); }
+    .impact-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .impact-intro {
+      position: sticky;
+      top: 6rem;
+    }
+    .impact-intro-text {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+    .impact-list { display: flex; flex-direction: column; gap: 1px; }
+    .impact-item {
+      background: white;
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: start;
+      border-bottom: 1px solid var(--rule);
+    }
+    .impact-metric {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--merlot);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .impact-detail-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .impact-detail-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .impact-detail-org {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    /* ── TEMPLATES ── */
+    .templates-section { background: var(--cream); }
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .template-card {
+      border: 1px solid var(--rule);
+      padding: 2rem 2.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      background: white;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .template-card:hover {
+      border-color: var(--blush);
+      box-shadow: 4px 4px 0 rgba(160,96,112,0.12);
+    }
+    .template-icon {
+      width: 48px; height: 48px;
+      border: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.3rem;
+    }
+    .template-info { flex: 1; }
+    .template-name {
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+    .template-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .template-dl {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blush);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--wine); color: white; }
+    .about-section .section-title { color: white; }
+    .about-section .section-num { color: var(--blush); }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 1rem;
+    }
+    .about-copy p {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: rgba(250,246,244,0.75);
+      margin-bottom: 1.5rem;
+    }
+    .creds-list { list-style: none; }
+    .creds-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(160,96,112,0.2);
+      font-size: 0.88rem;
+    }
+    .creds-list li:first-child { border-top: 1px solid rgba(160,96,112,0.2); }
+    .cred-company {
+      font-weight: 500;
+      color: var(--blush);
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+    .cred-role { color: rgba(250,246,244,0.5); }
+
+    /* ── CONTACT ── */
+    .contact-section { background: white; text-align: center; }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+    .contact-inner .section-header { justify-content: center; }
+    .contact-copy {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+    footer span { color: var(--blush); }
+
+    /* ── PLACEHOLDER BADGE ── */
+    .placeholder-badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      background: rgba(160,96,112,0.08);
+      border: 1px dashed var(--blush);
+      border-radius: 2px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blush);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > * {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .hero-eyebrow { animation-delay: 0.1s; }
+    .hero-name    { animation-delay: 0.2s; }
+    .hero-title   { animation-delay: 0.3s; }
+    .hero-bio     { animation-delay: 0.4s; }
+    .hero-cta     { animation-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 5rem 2rem 3rem; border-right: none; border-bottom: 1px solid var(--rule); }
+      .hero-right { padding: 3rem 2rem; }
+      .section-inner { padding: 0 2rem; }
+      .work-grid { grid-template-columns: 1fr; }
+      .impact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .impact-intro { position: static; }
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .templates-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">P27 &amp; Co &nbsp;·&nbsp; <em style="font-style:italic; color:var(--blush);">Paula R. Duverne</em></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#templates">Templates</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">People &amp; Talent Portfolio</p>
+    <h1 class="hero-name">Paula R.<br><em>Duverne</em></h1>
+    <p class="hero-title">Talent Management &middot; L&amp;D &middot; Organizational Effectiveness</p>
+    <p class="hero-bio">
+      SHRM-CP certified People &amp; Talent leader with a track record of building capability frameworks, 
+      learning ecosystems, and talent programs that move organizations forward. 
+      This portfolio captures the work behind the outcomes — the memos, frameworks, and tools that define my practice.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">View My Work</a>
+      <a href="https://www.linkedin.com/in/pauladverne" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years in People &amp; Talent</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Organizations Transformed</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Programs Built from Scratch</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1</div>
+        <div class="stat-label">SHRM-CP Credential</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>"The best talent leaders don't just fill seats — they build the conditions for people to do their best work."</p>
+      <cite>Paula R. Duverne</cite>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / MEMOS -->
+<section class="work-section" id="work">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01 —</span>
+      <h2 class="section-title">Talent Memos &amp; Frameworks</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <p class="work-tag">Talent Strategy</p>
+        <h3 class="work-card-title">Performance Enablement Framework for Distributed Teams</h3>
+        <p class="work-card-desc">A greenfield performance philosophy designed for async-first organizations, replacing legacy review cycles with continuous feedback loops and manager capability building.</p>
+        <div class="work-meta">
+          <span class="work-org">Add your org here</span>
+          <span class="work-arrow">→</span>
+        </div>
+        <span class="placeholder-badge">Add your link</span>
+      </div>
+
+      <div class="work-card">
+        <p class="work-tag">Learning &amp; Development</p>
+        <h3 class="work-card-title">New Leader Onboarding: From Hire to High-Impact</h3>
+        <p class="work-card-desc">A structured 90-day onboarding program for senior leaders, anchored in stakeholder mapping, culture fluency, and early-win identification. Cut time-to-productivity by measurable weeks.</p>
+        <div class="work-meta">
+          <span class="work-org">Add your org here</span>
+          <span class="work-arrow">→</span>
+        </div>
+        <span class="placeholder-badge">Add your link</span>
+      </div>
+
+      <div class="work-card">
+        <p class="work-tag">Org Effectiveness</p>
+        <h3 class="work-card-title">Capability Gap Analysis &amp; L&amp;D Roadmap</h3>
+        <p class="work-card-desc">An org-wide diagnostic memo mapping role-specific skill gaps to business outcomes, with a phased 12-month learning investment plan tied to growth priorities.</p>
+        <div class="work-meta">
+          <span class="work-org">Add your org here</span>
+          <span class="work-arrow">→</span>
+        </div>
+        <span class="placeholder-badge">Add your link</span>
+      </div>
+
+      <div class="work-card">
+        <p class="work-tag">Talent Acquisition</p>
+        <h3 class="work-card-title">Interview Calibration Guide for Hiring Teams</h3>
+        <p class="work-card-desc">A structured behavioral interviewing toolkit that reduced interviewer bias and improved offer-acceptance rates by aligning hiring teams around clear evaluation criteria.</p>
+        <div class="work-meta">
+          <span class="work-org">Add your org here</span>
+          <span class="work-arrow">→</span>
+        </div>
+        <span class="placeholder-badge">Add your link</span>
+      </div>
+
+      <div class="work-card">
+        <p class="work-tag">Manager Effectiveness</p>
+        <h3 class="work-card-title">Manager Maturity Model: Levels 1–5</h3>
+        <p class="work-card-desc">A custom competency rubric for people managers, used as the foundation for promotion calibrations, development plans, and targeted learning paths across business units.</p>
+        <div class="work-meta">
+          <span class="work-org">Add your org here</span>
+          <span class="work-arrow">→</span>
+        </div>
+        <span class="placeholder-badge">Add your link</span>
+      </div>
+
+      <div class="work-card">
+        <p class="work-tag">Change Management</p>
+        <h3 class="work-card-title">Workforce Transition Playbook</h3>
+        <p class="work-card-desc">A communications and change management framework deployed during organizational restructuring, keeping engagement scores stable and voluntary attrition below industry benchmarks during a period of significant change.</p>
+        <div class="work-meta">
+          <span class="work-org">Add your org here</span>
+          <span class="work-arrow">→</span>
+        </div>
+        <span class="placeholder-badge">Add your link</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section" id="impact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02 —</span>
+      <h2 class="section-title">Impact by the Numbers</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="impact-layout">
+      <div class="impact-intro">
+        <p class="impact-intro-text">
+          Numbers tell part of the story. Behind each metric is a business problem, a designed intervention, and a measured outcome. 
+          Replace these placeholders with your real results.
+        </p>
+        <br>
+        <a href="#contact" class="btn btn-primary">Let's connect</a>
+      </div>
+      <div class="impact-list">
+
+        <div class="impact-item">
+          <div class="impact-metric">↑ X%</div>
+          <div>
+            <div class="impact-detail-title">Manager Effectiveness Score</div>
+            <div class="impact-detail-desc">Increased year-over-year following launch of structured manager capability program and calibrated feedback cycles across [#] business units.</div>
+            <span class="impact-detail-org">Organization Name</span>
+            <span class="placeholder-badge">Update with your data</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">−X wks</div>
+          <div>
+            <div class="impact-detail-title">Time-to-Productivity for New Hires</div>
+            <div class="impact-detail-desc">Redesigned onboarding experience reduced time-to-first-contribution for incoming leaders, measured against prior cohort benchmarks.</div>
+            <span class="impact-detail-org">Organization Name</span>
+            <span class="placeholder-badge">Update with your data</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">$XM</div>
+          <div>
+            <div class="impact-detail-title">Training Vendor Cost Reduction</div>
+            <div class="impact-detail-desc">Consolidated fragmented external vendor spend by building an internal curriculum, reallocating budget toward higher-impact learning experiences.</div>
+            <span class="impact-detail-org">Organization Name</span>
+            <span class="placeholder-badge">Update with your data</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">X:1</div>
+          <div>
+            <div class="impact-detail-title">Internal Promotion Ratio</div>
+            <div class="impact-detail-desc">Built succession pipeline that increased internal fills for senior roles, reducing external hiring costs and accelerating cultural continuity.</div>
+            <span class="impact-detail-org">Organization Name</span>
+            <span class="placeholder-badge">Update with your data</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">↑ X pts</div>
+          <div>
+            <div class="impact-detail-title">Employee Engagement Index</div>
+            <div class="impact-detail-desc">Lifted engagement scores during a period of organizational change through proactive communication strategy, listening sessions, and targeted culture interventions.</div>
+            <span class="impact-detail-org">Organization Name</span>
+            <span class="placeholder-badge">Update with your data</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="templates-section" id="templates">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03 —</span>
+      <h2 class="section-title">Tools &amp; Templates</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="templates-grid">
+
+      <div class="template-card">
+        <div class="template-icon">📋</div>
+        <div class="template-info">
+          <div class="template-name">30-60-90 Day Onboarding Plan</div>
+          <div class="template-desc">Structured template for leader onboarding with milestone check-ins and success metrics.</div>
+          <span class="placeholder-badge">Add your link</span>
+        </div>
+        <a href="#" class="template-dl">↓ Get</a>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">🎯</div>
+        <div class="template-info">
+          <div class="template-name">Competency Framework Builder</div>
+          <div class="template-desc">Role-level competency rubric template adaptable across functions and career levels.</div>
+          <span class="placeholder-badge">Add your link</span>
+        </div>
+        <a href="#" class="template-dl">↓ Get</a>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">🔍</div>
+        <div class="template-info">
+          <div class="template-name">Talent Review Calibration Guide</div>
+          <div class="template-desc">Facilitator guide for structured talent conversations with 9-box integration.</div>
+          <span class="placeholder-badge">Add your link</span>
+        </div>
+        <a href="#" class="template-dl">↓ Get</a>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">💬</div>
+        <div class="template-info">
+          <div class="template-name">Manager 1:1 Conversation Framework</div>
+          <div class="template-desc">A structured weekly check-in template that balances performance, development, and wellbeing.</div>
+          <span class="placeholder-badge">Add your link</span>
+        </div>
+        <a href="#" class="template-dl">↓ Get</a>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">📊</div>
+        <div class="template-info">
+          <div class="template-name">L&amp;D Needs Assessment Survey</div>
+          <div class="template-desc">Diagnostic survey template for surfacing capability gaps and learning priorities at scale.</div>
+          <span class="placeholder-badge">Add your link</span>
+        </div>
+        <a href="#" class="template-dl">↓ Get</a>
+      </div>
+
+      <div class="template-card">
+        <div class="template-icon">🗺️</div>
+        <div class="template-info">
+          <div class="template-name">Succession Planning Worksheet</div>
+          <div class="template-desc">A practical planning tool for identifying and developing internal successors for critical roles.</div>
+          <span class="placeholder-badge">Add your link</span>
+        </div>
+        <a href="#" class="template-dl">↓ Get</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04 —</span>
+      <h2 class="section-title">About Paula</h2>
+      <div class="section-rule" style="background:rgba(255,255,255,0.1);"></div>
+    </div>
+    <div class="about-layout">
+      <div class="about-copy">
+        <p>
+          I'm a People &amp; Talent leader who sits at the intersection of talent management and learning &amp; development — 
+          not choosing between the two, but using both to drive organizational performance.
+        </p>
+        <p>
+          My work is grounded in systems thinking: how roles connect to capability, 
+          how capability connects to culture, and how culture connects to outcomes. 
+          I've built programs from zero, fixed ones that weren't working, and partnered with 
+          executives to navigate complexity with clarity.
+        </p>
+        <p>
+          Whether greenfield or inherited, I bring a product mindset to people work — 
+          designing solutions that are user-centered, outcomes-driven, and built to scale.
+        </p>
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+        </div>
+      </div>
+      <div>
+        <ul class="creds-list">
+          <li>
+            <span class="cred-company">The Aspen Group</span>
+            <span class="cred-role">Senior Program Manager, Talent</span>
+          </li>
+          <li>
+            <span class="cred-company">Celsius</span>
+            <span class="cred-role">Project Manager, People</span>
+          </li>
+          <li>
+            <span class="cred-company">Arcadia</span>
+            <span class="cred-role">Program Manager</span>
+          </li>
+          <li>
+            <span class="cred-company">Medisys Health</span>
+            <span class="cred-role">HR Lead</span>
+          </li>
+          <li>
+            <span class="cred-company">Capital One</span>
+            <span class="cred-role">Principal</span>
+          </li>
+          <li>
+            <span class="cred-company">SHRM-CP</span>
+            <span class="cred-role">Society for Human Resource Management</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="section-header" style="justify-content:center; margin-bottom:2rem;">
+        <span class="section-num">05 —</span>
+        <h2 class="section-title">Let's Connect</h2>
+      </div>
+      <p class="contact-copy">
+        Whether you're building a people function, redesigning a talent program, 
+        or looking for a thought partner on org effectiveness — I'd love to talk.
+      </p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/pauladverne" target="_blank" class="btn btn-primary">LinkedIn</a>
+        <a href="/cdn-cgi/l/email-protection#0871677d7a486d65696164266b6765" class="btn btn-secondary">Email Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <span>P27 &amp; Co</span> &mdash; Paula R. Duverne &middot; People &amp; Talent Portfolio</p>
