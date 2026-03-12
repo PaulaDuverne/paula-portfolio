@@ -383,6 +383,110 @@
     .memo-featured:hover            { background: var(--merlot) !important; }
     .memo-featured .coming-soon     { border-color: rgba(160,96,112,0.4); color: var(--blush); background: rgba(160,96,112,0.1); }
 
+    /* INSIGHTS CAROUSEL */
+    .insights-carousel-wrap {
+      position: relative;
+    }
+    .insights-carousel-shell {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(250,246,244,0.42));
+    }
+    .insights-carousel {
+      display: flex;
+      gap: 1.25rem;
+      will-change: transform;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      padding: 1.5rem 0;
+    }
+    .insights-carousel .work-card {
+      flex: 0 0 calc((100% - 2.5rem) / 3);
+      min-width: 0;
+      border: 1px solid var(--rule);
+      min-height: 100%;
+      box-shadow: 0 14px 34px rgba(24,10,16,0.05);
+    }
+    .insights-carousel-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .insights-carousel-kicker {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blush);
+    }
+    .insights-carousel-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: flex-end;
+    }
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      background: white;
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, background 0.2s, color 0.2s, opacity 0.2s;
+      box-shadow: 0 10px 24px rgba(24,10,16,0.05);
+    }
+    .carousel-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--blush);
+      color: var(--merlot);
+      background: var(--warm);
+    }
+    .carousel-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .insights-carousel-subcopy {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .carousel-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-top: 1.25rem;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(160,96,112,0.24);
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, width 0.2s;
+      padding: 0;
+    }
+    .carousel-dot.active {
+      width: 28px;
+      background: var(--merlot);
+    }
+
+    @media (max-width: 1200px) {
+      .insights-carousel .work-card {
+        flex: 0 0 calc((100% - 1.25rem) / 2);
+      }
+    }
+
     /* ABOUT */
     .about-section { background: var(--wine); color: white; }
     .about-section .section-title { color: white; }
@@ -527,6 +631,16 @@
       .hero-right { min-height: 420px; }
       .section-inner { padding: 0 2rem; }
       .work-grid { grid-template-columns: 1fr; }
+      .insights-carousel-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .insights-carousel .work-card {
+        flex: 0 0 100%;
+      }
+      .insights-carousel-nav {
+        justify-content: flex-start;
+      }
       .impact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .impact-intro { position: static; }
       .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -665,13 +779,14 @@ background: transparent !important;
   <div class="hero-left">
     <p class="hero-eyebrow">People &amp; Talent · SHRM-CP · M.S. NYU</p>
     <h1 class="hero-name">Paula R.<br><em>Duverné</em></h1>
-    <p class="hero-title">People Strategy &middot; Talent Management &middot; Organizational Effectiveness</p>
+    <p class="hero-title">People Strategy &middot; Talent Management &middot;  &middot; Organizational Effectiveness</p>
     <p class="hero-bio">
       I build the infrastructure behind high-performing organizations — 
       talent strategy, performance systems, capability frameworks, and the 
       programs that turn potential into results.
     </p>
     <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/prd00001" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>
     </div>
   </div>
   <div class="hero-right">
@@ -768,6 +883,7 @@ background: transparent !important;
   </div>
 </section>
 
+
 <section class="work-section" id="work">
   <div class="section-inner">
     <div class="section-header">
@@ -775,96 +891,115 @@ background: transparent !important;
       <h2 class="section-title">Insights</h2>
       <div class="section-rule"></div>
     </div>
-    <div class="work-grid">
 
-      <a href="https://www.linkedin.com/posts/activity-7434946159628132352-Pviz?utm_source=share&utm_medium=member_desktop&rcm=ACoAABsBpQUBSNWBRRIGvlS0bdyFwva_brR1PL4" target="_blank" class="work-card memo-featured">
-        <p class="work-tag">The Talent Memo™ · No. 01</p>
-        <h3 class="work-card-title">The Onboarding Gap: Why Your New Hires Still Don't "Get It" Six Months In</h3>
-        <p class="work-card-desc">Most onboarding programs check every box and miss every point. This memo names the three questions every new hire is quietly asking — and what actually changes when talent management starts on Day 1.</p>
-        <div class="work-meta">
-          <span class="work-org">P27 &amp; Co</span>
-          <span class="work-arrow">→</span>
+    <div class="insights-carousel-wrap">
+      <div class="insights-carousel-topbar">
+        <span class="insights-carousel-kicker">Featured thinking · 8 insights</span>
+        <div class="insights-carousel-nav">
+          <button class="carousel-btn" id="insightsPrev" aria-label="Previous insight">←</button>
+          <button class="carousel-btn" id="insightsNext" aria-label="Next insight">→</button>
         </div>
-      </a>
+      </div>
 
-      <a href="https://www.linkedin.com/posts/activity-7437846708635525120-DbaA?utm_source=share&utm_medium=member_desktop&rcm=ACoAABsBpQUBSNWBRRIGvlS0bdyFwva_brR1PL4" target="_blank" class="work-card memo-featured">
-        <p class="work-tag">The Talent Memo™ · No. 02</p>
-        <h3 class="work-card-title">The Calibration Problem: Why the Best Managers Aren't Better Evaluators — They're Better Calibrators</h3>
-        <p class="work-card-desc">Most managers jump straight to evaluation and skip the harder work: building shared clarity on what strong performance actually looks like. This memo breaks down what calibration actually is, why it gets skipped, and what changes when you get it right in the first 90 days.</p>
-        <div class="work-meta">
-          <span class="work-org">P27 &amp; Co</span>
-          <span class="work-arrow">→</span>
-        </div>
-      </a>
+      <p class="insights-carousel-subcopy"></p>
 
-      <a href="#" class="work-card">
-        <p class="work-tag">Performance Management · The Talent Memo™ No. 03</p>
-        <h3 class="work-card-title">The Performance Review Problem: Why the Outcome Is Already Written</h3>
-        <p class="work-card-desc">Most performance reviews are a formality. The real evaluation happened months earlier — in the patterns managers noticed and the signals employees sent. This memo unpacks what actually drives outcomes and how to redesign for fairness.</p>
-        <div class="work-meta">
-          <span class="work-org">The Talent Memo™ · No. 03</span>
-          <span class="work-arrow">→</span>
-        </div>
-        <span class="coming-soon">Link coming soon</span>
-      </a>
+      <div class="insights-carousel-shell">
+        <div class="insights-carousel" id="insightsCarousel">
 
-      <a href="#" class="work-card">
-        <p class="work-tag">Talent Strategy</p>
-        <h3 class="work-card-title">Greenfield Talent Architecture: Building the Function Before the Fire</h3>
-        <p class="work-card-desc">A framework for standing up a talent function in a scaling organization — sequencing priorities, setting the infrastructure, and earning executive trust before the first performance cycle hits.</p>
-        <div class="work-meta">
-          <span class="work-org">Strategic Framework</span>
-          <span class="work-arrow">→</span>
-        </div>
-        <span class="coming-soon">Link coming soon</span>
-      </a>
+          <a href="https://www.linkedin.com/posts/activity-7434946159628132352-Pviz?utm_source=share&utm_medium=member_desktop&rcm=ACoAABsBpQUBSNWBRRIGvlS0bdyFwva_brR1PL4" target="_blank" class="work-card memo-featured">
+            <p class="work-tag">The Talent Memo™ · No. 01</p>
+            <h3 class="work-card-title">The Onboarding Gap: Why Your New Hires Still Don't "Get It" Six Months In</h3>
+            <p class="work-card-desc">Most onboarding programs check every box and miss every point. This memo names the three questions every new hire is quietly asking — and what actually changes when talent management starts on Day 1.</p>
+            <div class="work-meta">
+              <span class="work-org">P27 &amp; Co</span>
+              <span class="work-arrow">→</span>
+            </div>
+          </a>
 
-      <a href="#" class="work-card">
-        <p class="work-tag">Manager Effectiveness</p>
-        <h3 class="work-card-title">The Manager Maturity Model: From Coordinator to Culture Carrier</h3>
-        <p class="work-card-desc">A 5-level competency rubric for people managers — used as the foundation for promotion calibrations, development plans, and targeted interventions across business units.</p>
-        <div class="work-meta">
-          <span class="work-org">Competency Framework</span>
-          <span class="work-arrow">→</span>
-        </div>
-        <span class="coming-soon">Link coming soon</span>
-      </a>
+          <a href="https://www.linkedin.com/posts/activity-7437846708635525120-DbaA?utm_source=share&utm_medium=member_desktop&rcm=ACoAABsBpQUBSNWBRRIGvlS0bdyFwva_brR1PL4" target="_blank" class="work-card memo-featured">
+            <p class="work-tag">The Talent Memo™ · No. 02</p>
+            <h3 class="work-card-title">The Calibration Problem: Why the Best Managers Aren't Better Evaluators — They're Better Calibrators</h3>
+            <p class="work-card-desc">Most managers jump straight to evaluation and skip the harder work: building shared clarity on what strong performance actually looks like. This memo breaks down what calibration actually is, why it gets skipped, and what changes when you get it right in the first 90 days.</p>
+            <div class="work-meta">
+              <span class="work-org">P27 &amp; Co</span>
+              <span class="work-arrow">→</span>
+            </div>
+          </a>
 
-      <a href="#" class="work-card">
-        <p class="work-tag">Talent Acquisition</p>
-        <h3 class="work-card-title">Interview Calibration Guide: Aligning Hiring Teams on What "Great" Looks Like</h3>
-        <p class="work-card-desc">A structured behavioral interviewing toolkit that reduces evaluator bias and improves offer-acceptance rates by anchoring hiring teams to shared, role-specific criteria before the first screen.</p>
-        <div class="work-meta">
-          <span class="work-org">Hiring Infrastructure</span>
-          <span class="work-arrow">→</span>
-        </div>
-        <span class="coming-soon">Link coming soon</span>
-      </a>
+          <a href="#" class="work-card">
+            <p class="work-tag">Performance Management · The Talent Memo™ No. 03</p>
+            <h3 class="work-card-title">The Performance Review Problem: Why the Outcome Is Already Written</h3>
+            <p class="work-card-desc">Most performance reviews are a formality. The real evaluation happened months earlier — in the patterns managers noticed and the signals employees sent. This memo unpacks what actually drives outcomes and how to redesign for fairness.</p>
+            <div class="work-meta">
+              <span class="work-org">The Talent Memo™ · No. 03</span>
+              <span class="work-arrow">→</span>
+            </div>
+            <span class="coming-soon">Link coming soon</span>
+          </a>
 
-      <a href="#" class="work-card">
-        <p class="work-tag">Org Effectiveness</p>
-        <h3 class="work-card-title">Capability Gap Analysis: Connecting Skill Gaps to Business Outcomes</h3>
-        <p class="work-card-desc">An org-wide diagnostic memo mapping role-specific skill gaps to strategic priorities, with a phased investment plan that makes the case for people development in the language of the business.</p>
-        <div class="work-meta">
-          <span class="work-org">Diagnostic Framework</span>
-          <span class="work-arrow">→</span>
-        </div>
-        <span class="coming-soon">Link coming soon</span>
-      </a>
+          <a href="#" class="work-card">
+            <p class="work-tag">Talent Strategy</p>
+            <h3 class="work-card-title">Greenfield Talent Architecture: Building the Function Before the Fire</h3>
+            <p class="work-card-desc">A framework for standing up a talent function in a scaling organization — sequencing priorities, setting the infrastructure, and earning executive trust before the first performance cycle hits.</p>
+            <div class="work-meta">
+              <span class="work-org">Strategic Framework</span>
+              <span class="work-arrow">→</span>
+            </div>
+            <span class="coming-soon">Link coming soon</span>
+          </a>
 
-      <a href="#" class="work-card">
-        <p class="work-tag">Change Management</p>
-        <h3 class="work-card-title">Workforce Transition Playbook: Keeping Talent Through Structural Change</h3>
-        <p class="work-card-desc">A communications and change management framework deployed during organizational restructuring — keeping engagement stable and voluntary attrition below industry benchmarks when uncertainty was highest.</p>
-        <div class="work-meta">
-          <span class="work-org">Change Playbook</span>
-          <span class="work-arrow">→</span>
+          <a href="#" class="work-card">
+            <p class="work-tag">Manager Effectiveness</p>
+            <h3 class="work-card-title">The Manager Maturity Model: From Coordinator to Culture Carrier</h3>
+            <p class="work-card-desc">A 5-level competency rubric for people managers — used as the foundation for promotion calibrations, development plans, and targeted interventions across business units.</p>
+            <div class="work-meta">
+              <span class="work-org">Competency Framework</span>
+              <span class="work-arrow">→</span>
+            </div>
+            <span class="coming-soon">Link coming soon</span>
+          </a>
+
+          <a href="#" class="work-card">
+            <p class="work-tag">Talent Acquisition</p>
+            <h3 class="work-card-title">Interview Calibration Guide: Aligning Hiring Teams on What "Great" Looks Like</h3>
+            <p class="work-card-desc">A structured behavioral interviewing toolkit that reduces evaluator bias and improves offer-acceptance rates by anchoring hiring teams to shared, role-specific criteria before the first screen.</p>
+            <div class="work-meta">
+              <span class="work-org">Hiring Infrastructure</span>
+              <span class="work-arrow">→</span>
+            </div>
+            <span class="coming-soon">Link coming soon</span>
+          </a>
+
+          <a href="#" class="work-card">
+            <p class="work-tag">Org Effectiveness</p>
+            <h3 class="work-card-title">Capability Gap Analysis: Connecting Skill Gaps to Business Outcomes</h3>
+            <p class="work-card-desc">An org-wide diagnostic memo mapping role-specific skill gaps to strategic priorities, with a phased investment plan that makes the case for people development in the language of the business.</p>
+            <div class="work-meta">
+              <span class="work-org">Diagnostic Framework</span>
+              <span class="work-arrow">→</span>
+            </div>
+            <span class="coming-soon">Link coming soon</span>
+          </a>
+
+          <a href="#" class="work-card">
+            <p class="work-tag">Change Management</p>
+            <h3 class="work-card-title">Workforce Transition Playbook: Keeping Talent Through Structural Change</h3>
+            <p class="work-card-desc">A communications and change management framework deployed during organizational restructuring — keeping engagement stable and voluntary attrition below industry benchmarks when uncertainty was highest.</p>
+            <div class="work-meta">
+              <span class="work-org">Change Playbook</span>
+              <span class="work-arrow">→</span>
+            </div>
+            <span class="coming-soon">Link coming soon</span>
+          </a>
+
         </div>
-        <span class="coming-soon">Link coming soon</span>
-      </a>
-</div>
+      </div>
+
+      <div class="carousel-dots" id="insightsDots" aria-label="Insights carousel pagination"></div>
+    </div>
   </div>
 </section>
+
 
 <section class="templates-section" id="templates">
   <div class="section-inner">
@@ -1144,6 +1279,91 @@ background: transparent !important;
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeResumeModal();
   });
+
+  // ── INSIGHTS CAROUSEL ───────────────────────────────────────
+  const insightsCarousel = document.getElementById('insightsCarousel');
+  const insightsPrev = document.getElementById('insightsPrev');
+  const insightsNext = document.getElementById('insightsNext');
+  const insightsDots = document.getElementById('insightsDots');
+
+  if (insightsCarousel && insightsPrev && insightsNext && insightsDots) {
+    const cards = Array.from(insightsCarousel.querySelectorAll('.work-card'));
+    let currentPage = 0;
+    let pages = 1;
+    let cardsPerPage = 3;
+
+    function getCardsPerPage() {
+      if (window.innerWidth <= 960) return 1;
+      if (window.innerWidth <= 1200) return 2;
+      return 3;
+    }
+
+    function getGap() {
+      const styles = window.getComputedStyle(insightsCarousel);
+      return parseFloat(styles.gap || styles.columnGap || 0);
+    }
+
+    function buildDots() {
+      insightsDots.innerHTML = '';
+      for (let i = 0; i < pages; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to insights page ${i + 1}`);
+        dot.addEventListener('click', () => {
+          currentPage = i;
+          updateCarousel();
+        });
+        insightsDots.appendChild(dot);
+      }
+    }
+
+    function updateCarousel() {
+      cardsPerPage = getCardsPerPage();
+      pages = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+      currentPage = Math.min(currentPage, pages - 1);
+
+      const firstCard = cards[0];
+      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+      const offset = currentPage * (cardWidth + getGap()) * cardsPerPage;
+
+      insightsCarousel.style.transform = `translateX(-${offset}px)`;
+
+      insightsPrev.disabled = currentPage === 0;
+      insightsNext.disabled = currentPage === pages - 1;
+
+      const dots = Array.from(insightsDots.querySelectorAll('.carousel-dot'));
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentPage);
+      });
+    }
+
+    function initializeCarousel() {
+      cardsPerPage = getCardsPerPage();
+      pages = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+      buildDots();
+      updateCarousel();
+    }
+
+    insightsPrev.addEventListener('click', function() {
+      if (currentPage > 0) {
+        currentPage -= 1;
+        updateCarousel();
+      }
+    });
+
+    insightsNext.addEventListener('click', function() {
+      if (currentPage < pages - 1) {
+        currentPage += 1;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener('resize', initializeCarousel);
+    window.addEventListener('load', initializeCarousel);
+    initializeCarousel();
+  }
+
 </script>
 </body>
 </html>
