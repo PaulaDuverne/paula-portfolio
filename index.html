@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow" />
-  <title>Paula R. Duverne | People & Talent Portfolio</title>
+  <title>Paula R. Duverné | People & Talent Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -441,6 +441,69 @@
     }
     footer span { color: var(--blush); }
 
+    /* RESUME NAV LINK */
+    .nav-resume {
+      background: var(--wine);
+      color: var(--warm) !important;
+      padding: 0.38rem 0.9rem;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+      transition: background 0.2s !important;
+    }
+    .nav-resume:hover { background: var(--merlot) !important; color: var(--warm) !important; }
+
+    /* RESUME MODAL */
+    .resume-modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(24,10,16,0.72);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    .resume-modal-overlay.open { display: flex; }
+    .resume-modal {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      padding: 3rem 3rem 2.5rem;
+      width: 100%; max-width: 420px;
+      box-shadow: 0 24px 64px rgba(24,10,16,0.3);
+      animation: fadeUp 0.3s ease forwards;
+    }
+    .resume-modal h3 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 0.4rem;
+    }
+    .resume-modal p {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+    .resume-modal input[type="password"] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--rule);
+      background: white;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .resume-modal input[type="password"]:focus { border-color: var(--blush); }
+    .resume-modal-error {
+      font-size: 0.78rem;
+      color: var(--merlot);
+      margin-bottom: 1rem;
+      min-height: 1.1em;
+      display: block;
+    }
+    .resume-modal-actions { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+    .resume-modal-actions .btn { flex: 1; text-align: center; }
+
     /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -473,22 +536,37 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Paula R. Duverne</a>
+  <a class="nav-logo" href="#">Paula R. Duverné</a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#impact">Impact</a></li>
     <li><a href="#templates">Templates</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#" class="nav-resume" onclick="openResumeModal(event)">Résumé</a></li>
   </ul>
 </nav>
+
+<!-- RESUME MODAL -->
+<div class="resume-modal-overlay" id="resumeModal" onclick="handleModalOverlayClick(event)">
+  <div class="resume-modal">
+    <h3>Access Résumé</h3>
+    <p>This document is password protected. Enter the access code to view Paula's full résumé.</p>
+    <input type="password" id="resumePassword" placeholder="Enter password" onkeydown="if(event.key==='Enter') submitResumePassword()" />
+    <span class="resume-modal-error" id="resumeError"></span>
+    <div class="resume-modal-actions">
+      <button class="btn btn-secondary" onclick="closeResumeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitResumePassword()">View Résumé</button>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
-    <p class="hero-eyebrow">People &amp; Talent · SHRM-CP</p>
-    <h1 class="hero-name">Paula R.<br><em>Duverne</em></h1>
-    <p class="hero-title">Talent Management &middot; Organizational Effectiveness</p>
+    <p class="hero-eyebrow">People &amp; Talent · SHRM-CP · M.Sc. NYU</p>
+    <h1 class="hero-name">Paula R.<br><em>Duverné</em></h1>
+    <p class="hero-title">People Strategy &middot; HR Business Partnering &middot; Organizational Effectiveness</p>
     <p class="hero-bio">
       I build the infrastructure behind high-performing organizations — 
       talent strategy, performance systems, capability frameworks, and the 
@@ -506,20 +584,20 @@
     </div>
     <div class="hero-stats">
       <div class="stat-cell">
-        <div class="stat-num">10+</div>
+        <div class="stat-num">12+</div>
         <div class="stat-label">Years in People &amp; Talent</div>
       </div>
       <div class="stat-cell">
+        <div class="stat-num">20K+</div>
+        <div class="stat-label">Employees Supported</div>
+      </div>
+      <div class="stat-cell">
         <div class="stat-num">5</div>
-        <div class="stat-label">Organizations Impacted</div>
+        <div class="stat-label">Industries &amp; Orgs</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num">∞</div>
-        <div class="stat-label">Programs Built from Zero</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Certifications · SHRM-CP, CSM, CSPO</div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Credentials · M.Sc., SHRM-CP, CSM, CSPO</div>
       </div>
     </div>
   </div>
@@ -535,26 +613,24 @@
     </div>
     <div class="work-grid">
 
-      <a href="#" class="work-card memo-featured">
+      <a href="https://drive.google.com/file/d/1_wuEW4Cqp02NLkrV4zrzZpsp6uid6y71/view?usp=sharing" target="_blank" class="work-card memo-featured">
         <p class="work-tag">The Talent Memo™ · No. 01</p>
-        <h3 class="work-card-title">Add your Memo No. 01 title here</h3>
-        <p class="work-card-desc">Add a 2–3 sentence description of the memo's core argument and what makes it worth reading. What problem does it name? What shift does it propose?</p>
+        <h3 class="work-card-title">The Onboarding Gap: Why Your New Hires Still Don't "Get It" Six Months In</h3>
+        <p class="work-card-desc">Most onboarding programs check every box and miss every point. This memo names the three questions every new hire is quietly asking — and what actually changes when talent management starts on Day 1.</p>
         <div class="work-meta">
           <span class="work-org">P27 &amp; Co</span>
           <span class="work-arrow">→</span>
         </div>
-        <span class="coming-soon">Link coming soon</span>
       </a>
 
-      <a href="#" class="work-card memo-featured">
+      <a href="https://drive.google.com/file/d/1jieWjX2bqa6VSUC06LrdfEykevRbSwPW/view?usp=sharing" target="_blank" class="work-card memo-featured">
         <p class="work-tag">The Talent Memo™ · No. 02</p>
-        <h3 class="work-card-title">Add your Memo No. 02 title here</h3>
-        <p class="work-card-desc">Add a 2–3 sentence description of the memo's core argument and what makes it worth reading. What problem does it name? What shift does it propose?</p>
+        <h3 class="work-card-title">The Calibration Problem: Why the Best Managers Aren't Better Evaluators — They're Better Calibrators</h3>
+        <p class="work-card-desc">Most managers jump straight to evaluation and skip the harder work: building shared clarity on what strong performance actually looks like. This memo breaks down what calibration actually is, why it gets skipped, and what changes when you get it right in the first 90 days.</p>
         <div class="work-meta">
           <span class="work-org">P27 &amp; Co</span>
           <span class="work-arrow">→</span>
         </div>
-        <span class="coming-soon">Link coming soon</span>
       </a>
 
       <a href="#" class="work-card">
@@ -638,55 +714,56 @@
     <div class="impact-layout">
       <div class="impact-intro">
         <p class="impact-intro-text">
-          Behind every metric is a business problem, a designed intervention, and a measured result. 
-          These are the outcomes — update each with your real data as you gather it.
+          Numbers without context are noise. These are high-level signals — 
+          the full story, with org-specific context and supporting detail, 
+          lives in the résumé.
         </p>
         <a href="#contact" class="btn btn-primary">Let's connect</a>
       </div>
       <div class="impact-list">
 
         <div class="impact-item">
-          <div class="impact-metric">↑ X%</div>
+          <div class="impact-metric">93%</div>
           <div>
-            <div class="impact-detail-title">Manager Effectiveness Score</div>
-            <div class="impact-detail-desc">Year-over-year lift following launch of a structured manager capability program and calibrated feedback cycles across multiple business units.</div>
-            <span class="impact-detail-org">Organization · Year</span>
+            <div class="impact-detail-title">Onboarding Satisfaction Score</div>
+            <div class="impact-detail-desc">Achieved on the first enterprise-wide onboarding program built from zero — alongside 100% completion rate and measurable reduction in new hire attrition across a multi-location network.</div>
+            <span class="impact-detail-org">Healthcare · Enterprise Program Build</span>
           </div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">−X wks</div>
+          <div class="impact-metric">−25%</div>
           <div>
-            <div class="impact-detail-title">Time-to-Productivity, New Leaders</div>
-            <div class="impact-detail-desc">Redesigned onboarding experience cut time-to-first-contribution for incoming leaders, measured against prior cohort benchmarks.</div>
-            <span class="impact-detail-org">Organization · Year</span>
+            <div class="impact-detail-title">Time-to-Productivity Improvement</div>
+            <div class="impact-detail-desc">Designed the full talent lifecycle framework — preboarding through offboarding — for a scaling tech organization, improving time-to-productivity across Product, Engineering, G&amp;A, and Sales.</div>
+            <span class="impact-detail-org">Tech · Talent Lifecycle Design</span>
           </div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">$XM</div>
+          <div class="impact-metric">95%</div>
           <div>
-            <div class="impact-detail-title">People Program Cost Efficiency</div>
-            <div class="impact-detail-desc">Consolidated fragmented external spend by building scalable internal programs, reallocating budget toward higher-impact interventions.</div>
-            <span class="impact-detail-org">Organization · Year</span>
+            <div class="impact-detail-title">Platform Adoption Rate</div>
+            <div class="impact-detail-desc">Led employee listening strategy and Culture Amp implementation, using AI-driven analytics to surface predictive engagement insights — achieving near-full adoption and enabling data-informed leadership decisions.</div>
+            <span class="impact-detail-org">Tech · Listening &amp; Engagement Infrastructure</span>
           </div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">X:1</div>
+          <div class="impact-metric">79%</div>
           <div>
-            <div class="impact-detail-title">Internal Promotion Ratio</div>
-            <div class="impact-detail-desc">Built succession pipeline that increased internal fills for senior roles, reducing external hiring costs and accelerating cultural continuity.</div>
-            <span class="impact-detail-org">Organization · Year</span>
+            <div class="impact-detail-title">Offer Acceptance Rate</div>
+            <div class="impact-detail-desc">Achieved after modernizing recruiting workflows and implementing structured interview frameworks — alongside a 15% reduction in early attrition across a 400-person, 32-location healthcare organization.</div>
+            <span class="impact-detail-org">Healthcare · Talent Acquisition &amp; Retention</span>
           </div>
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">↑ X pts</div>
+          <div class="impact-metric">3 of 3</div>
           <div>
-            <div class="impact-detail-title">Employee Engagement Index</div>
-            <div class="impact-detail-desc">Lifted engagement scores during a period of structural change through proactive communication strategy, listening sessions, and targeted interventions.</div>
-            <span class="impact-detail-org">Organization · Year</span>
+            <div class="impact-detail-title">Performance Systems Built from Zero</div>
+            <div class="impact-detail-desc">Designed and operationalized end-to-end performance management — including goal-setting, calibration, 9-box reviews, and HiPo identification — at three organizations with no prior infrastructure.</div>
+            <span class="impact-detail-org">Multi-Org · Greenfield Infrastructure Builds</span>
           </div>
         </div>
 
@@ -774,20 +851,21 @@
     <div class="about-layout">
       <div class="about-copy">
         <p>
-          I'm a People &amp; Talent leader with a track record of building the systems, 
-          frameworks, and programs that make organizations perform at their best. 
-          My work spans talent strategy, performance management, organizational effectiveness, 
-          and the capability infrastructure that supports sustainable growth.
+          I'm a People Strategy and HR Business Partner with 12+ years building the workforce systems, 
+          performance frameworks, and talent infrastructure that scaling organizations need — and advising 
+          the senior leaders who depend on them.
         </p>
         <p>
-          I've built people functions from zero, stepped into broken ones, and partnered 
-          with executives at the table — not just in support of it. Whether the challenge is 
-          a scaling startup that has never had real talent infrastructure, or a mature organization 
-          that has outgrown its systems, I show up with a clear point of view and a bias toward action.
+          I've built people functions from zero, navigated hypergrowth and restructuring, and partnered 
+          with C-suite leaders across global enterprises, scaling startups, and matrixed organizations 
+          supporting workforces of up to 20,000 employees. Whether the challenge is standing up a talent 
+          architecture that's never existed, or inheriting a broken one, I show up with a clear point of 
+          view and a bias toward action.
         </p>
         <p>
-          I hold a SHRM-CP, CSM, and CSPO certification, and a M.Sc., and I bring a product mindset to people work — 
-          designing solutions that are user-centered, outcomes-driven, and built to scale.
+          I hold an M.S. in Human Capital Analytics &amp; Technology from NYU, a SHRM-CP, and Scrum 
+          certifications (CSM &amp; CSPO) — and I bring a product mindset to people work: building for 
+          adoption, iterating based on feedback, and delivering outcomes that hold.
         </p>
         <div style="margin-top:2.25rem;">
           <a href="#contact" class="btn btn-primary" style="background:var(--blush); border-color:var(--blush);">Get in touch</a>
@@ -797,23 +875,33 @@
         <ul class="creds-list">
           <li>
             <span class="cred-company">TAG · The Aspen Group</span>
-            <span class="cred-role">Senior Program Manager, Talent</span>
+            <span class="cred-role">Senior Manager, People &amp; Commercial Strategy</span>
           </li>
           <li>
             <span class="cred-company">Celsius</span>
-            <span class="cred-role">Project Manager, People</span>
+            <span class="cred-role">Project Manager, Global Talent &amp; Workforce Strategy</span>
           </li>
           <li>
             <span class="cred-company">Arcadia</span>
-            <span class="cred-role">Program Manager</span>
+            <span class="cred-role">Program Manager, People Operations &amp; Talent Strategy</span>
           </li>
           <li>
             <span class="cred-company">Medisys Health Network</span>
-            <span class="cred-role">HR Lead</span>
+            <span class="cred-role">HR Lead, Talent &amp; People Operations</span>
           </li>
           <li>
             <span class="cred-company">Capital One</span>
-            <span class="cred-role">Principal</span>
+            <span class="cred-role">Principal, Commercial Ops &amp; Org Effectiveness</span>
+          </li>
+          <li>
+            <span class="cred-company">New York University</span>
+            <span class="cred-role">M.S. · Human Capital Analytics &amp; Technology</span>
+            <span class="cred-badge">Graduate</span>
+          </li>
+          <li>
+            <span class="cred-company">CUNY York College</span>
+            <span class="cred-role">B.S. · Business Administration, Human Resource Management</span>
+            <span class="cred-badge">Graduate</span>
           </li>
           <li>
             <span class="cred-company">SHRM-CP</span>
@@ -821,13 +909,8 @@
             <span class="cred-badge">Certified</span>
           </li>
           <li>
-            <span class="cred-company">CSM</span>
-            <span class="cred-role">Certified Scrum Master · Scrum Alliance</span>
-            <span class="cred-badge">Certified</span>
-          </li>
-          <li>
-            <span class="cred-company">CSPO</span>
-            <span class="cred-role">Certified Scrum Product Owner · Scrum Alliance</span>
+            <span class="cred-company">CSM · CSPO</span>
+            <span class="cred-role">Certified Scrum Master &amp; Product Owner · Scrum Alliance</span>
             <span class="cred-badge">Certified</span>
           </li>
         </ul>
@@ -858,8 +941,42 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2025 <span>Paula R. Duverne</span> &middot; People &amp; Talent Portfolio &middot; All rights reserved</p>
+  <p>&copy; 2025 <span>Paula R. Duverné</span> &middot; People &amp; Talent Portfolio &middot; All rights reserved</p>
 </footer>
 
+<script>
+  // ── RESUME MODAL ─────────────────────────────────────────────
+  // Replace the two values below with your actual password and Google Drive link.
+  const RESUME_PASSWORD  = 'Duverne2026';
+  const RESUME_DRIVE_URL = 'https://drive.google.com/file/d/1pHCmm17y8VHfGJy0WC4kI66ZmoDIzW-T/view?usp=sharing';
+
+  function openResumeModal(e) {
+    e.preventDefault();
+    document.getElementById('resumePassword').value = '';
+    document.getElementById('resumeError').textContent = '';
+    document.getElementById('resumeModal').classList.add('open');
+    setTimeout(() => document.getElementById('resumePassword').focus(), 80);
+  }
+  function closeResumeModal() {
+    document.getElementById('resumeModal').classList.remove('open');
+  }
+  function handleModalOverlayClick(e) {
+    if (e.target === document.getElementById('resumeModal')) closeResumeModal();
+  }
+  function submitResumePassword() {
+    const val = document.getElementById('resumePassword').value;
+    if (val === RESUME_PASSWORD) {
+      closeResumeModal();
+      window.open(RESUME_DRIVE_URL, '_blank');
+    } else {
+      document.getElementById('resumeError').textContent = 'Incorrect password. Please try again.';
+      document.getElementById('resumePassword').value = '';
+      document.getElementById('resumePassword').focus();
+    }
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeResumeModal();
+  });
+</script>
 </body>
 </html>
