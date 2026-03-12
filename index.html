@@ -143,7 +143,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 18%;
+      object-position: center top;
       display: block;
       opacity: 0.92;
     }
@@ -530,123 +530,6 @@
       .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .templates-grid { grid-template-columns: 1fr; }
     }
-
-
-    @media (max-width: 600px) {
-
-      nav {
-        padding: 0.8rem 1rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .section-inner {
-        padding: 0 1.25rem;
-      }
-
-      .hero {
-        padding-top: 64px;
-      }
-
-      .hero-left {
-        padding: 3.5rem 1.25rem 2rem;
-      }
-
-      .hero-name {
-        font-size: 2.2rem;
-        line-height: 1.02;
-      }
-
-      .hero-title {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero-bio {
-        font-size: 0.9rem;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .hero-right {
-        min-height: auto;
-      }
-
-      .hero-photo-wrap {
-        min-height: 280px;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr 1fr;
-        padding: 1rem;
-      }
-
-      .stat-cell {
-        padding: 1rem;
-      }
-
-      .stat-num {
-        font-size: 1.8rem;
-      }
-
-      .stat-label {
-        font-size: 0.62rem;
-        line-height: 1.4;
-      }
-
-      .section-header {
-        gap: 1rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .section-title {
-        font-size: 1.7rem;
-      }
-
-      section {
-        padding: 4rem 0;
-      }
-
-      .work-card,
-      .template-card,
-      .impact-item {
-        padding: 1.4rem;
-      }
-
-      .impact-item {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-
-      .impact-metric {
-        font-size: 1.8rem;
-      }
-
-      .about-layout {
-        gap: 2rem;
-      }
-
-      .contact-links {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .contact-links .btn {
-        width: 100%;
-      }
-    }
   </style>
 </head>
 <body>
@@ -655,8 +538,8 @@
 <nav>
   <a class="nav-logo" href="#">Paula R. Duverné</a>
   <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
     <li><a href="#impact">Impact</a></li>
+    <li><a href="#work">Insights</a></li>
     <li><a href="#templates">Templates</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -681,13 +564,14 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
-    <p class="hero-eyebrow">People &amp; Talent · SHRM-CP · M.S. NYU</p>
+    <p class="hero-eyebrow">People &amp; Talent · SHRM-CP · M.Sc. NYU</p>
     <h1 class="hero-name">Paula R.<br><em>Duverné</em></h1>
-    <p class="hero-title">People Strategy &middot; Talent Management &middot; HR Business Partnering &middot; Organizational Effectiveness</p>
+    <p class="hero-title">People Strategy &middot; HR Business Partnering &middot; Organizational Effectiveness</p>
     <p class="hero-bio">
       I build the infrastructure behind high-performing organizations — 
       talent strategy, performance systems, capability frameworks, and the 
-      programs that turn potential into results.
+      programs that turn potential into results. This portfolio captures the 
+      work, the thinking, and the outcomes.
     </p>
     <div class="hero-cta">
       <a href="#work" class="btn btn-primary">View My Work</a>
@@ -713,23 +597,160 @@
       </div>
       <div class="stat-cell">
         <div class="stat-num">4</div>
-        <div class="stat-label">Credentials · M.S., SHRM-CP, CSM, CSPO</div>
+        <div class="stat-label">Credentials · M.Sc., SHRM-CP, CSM, CSPO</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WORK -->
+<section class="impact-section" id="impact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02 —</span>
+      <h2 class="section-title">Impact by the Numbers</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="impact-layout">
+      <div class="impact-intro">
+        <p class="impact-intro-text">
+          Numbers without context are noise. These are high-level signals — 
+          the full story, with org-specific context and supporting detail, 
+          lives in the résumé.
+        </p>
+        <a href="#contact" class="btn btn-primary">Let's connect</a>
+      </div>
+      <div class="impact-list">
+
+        <div class="impact-item">
+          <div class="impact-metric">93%</div>
+          <div>
+            <div class="impact-detail-title">Onboarding Satisfaction Score</div>
+            <div class="impact-detail-desc">Achieved on the first enterprise-wide onboarding program built from zero — alongside 100% completion rate and measurable reduction in new hire attrition across a multi-location network.</div>
+            <span class="impact-detail-org">Healthcare · Enterprise Program Build</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">−25%</div>
+          <div>
+            <div class="impact-detail-title">Time-to-Productivity Improvement</div>
+            <div class="impact-detail-desc">Designed the full talent lifecycle framework — preboarding through offboarding — for a scaling tech organization, improving time-to-productivity across Product, Engineering, G&amp;A, and Sales.</div>
+            <span class="impact-detail-org">Tech · Talent Lifecycle Design</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">95%</div>
+          <div>
+            <div class="impact-detail-title">Platform Adoption Rate</div>
+            <div class="impact-detail-desc">Led employee listening strategy and Culture Amp implementation, using AI-driven analytics to surface predictive engagement insights — achieving near-full adoption and enabling data-informed leadership decisions.</div>
+            <span class="impact-detail-org">Tech · Listening &amp; Engagement Infrastructure</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">79%</div>
+          <div>
+            <div class="impact-detail-title">Offer Acceptance Rate</div>
+            <div class="impact-detail-desc">Achieved after modernizing recruiting workflows and implementing structured interview frameworks — alongside a 15% reduction in early attrition across a 400-person, 32-location healthcare organization.</div>
+            <span class="impact-detail-org">Healthcare · Talent Acquisition &amp; Retention</span>
+          </div>
+        </div>
+
+        <div class="impact-item">
+          <div class="impact-metric">3 of 3</div>
+          <div>
+            <div class="impact-detail-title">Performance Systems Built from Zero</div>
+            <div class="impact-detail-desc">Designed and operationalized end-to-end performance management — including goal-setting, calibration, 9-box reviews, and HiPo identification — at three organizations with no prior infrastructure.</div>
+            <span class="impact-detail-org">Multi-Org · Greenfield Infrastructure Builds</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="templates-section" id="templates">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03 —</span>
+      <h2 class="section-title">Tools &amp; Templates</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="templates-grid">
+
+      <a href="#" class="template-card">
+        <div class="template-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+        <div class="template-info">
+          <div class="template-name">30-60-90 Day Leader Onboarding Plan</div>
+          <div class="template-desc">Milestone-based onboarding template for new leaders, with check-in structure and early-win framework.</div>
+        </div>
+        <span class="template-dl">↓ Get</span>
+      </a>
+
+      <a href="#" class="template-card">
+        <div class="template-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="var(--merlot)"/><line x1="12" y1="3" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21"/></svg></div>
+        <div class="template-info">
+          <div class="template-name">Competency Framework Builder</div>
+          <div class="template-desc">Role-level competency rubric adaptable across functions and career levels — from IC to VP.</div>
+        </div>
+        <span class="template-dl">↓ Get</span>
+      </a>
+
+      <a href="#" class="template-card">
+        <div class="template-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div class="template-info">
+          <div class="template-name">Talent Review Calibration Guide</div>
+          <div class="template-desc">Facilitator guide for structured talent conversations, including 9-box integration and promotion readiness criteria.</div>
+        </div>
+        <span class="template-dl">↓ Get</span>
+      </a>
+
+      <a href="#" class="template-card">
+        <div class="template-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="13" x2="13" y2="13"/></svg></div>
+        <div class="template-info">
+          <div class="template-name">Manager 1:1 Conversation Framework</div>
+          <div class="template-desc">A structured weekly check-in template balancing performance, development, and wellbeing — with coaching prompts built in.</div>
+        </div>
+        <span class="template-dl">↓ Get</span>
+      </a>
+
+      <a href="#" class="template-card">
+        <div class="template-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="template-info">
+          <div class="template-name">Capability Needs Assessment</div>
+          <div class="template-desc">Diagnostic survey for surfacing skill gaps and development priorities at scale — with a built-in scoring matrix.</div>
+        </div>
+        <span class="template-dl">↓ Get</span>
+      </a>
+
+      <a href="#" class="template-card">
+        <div class="template-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
+        <div class="template-info">
+          <div class="template-name">Succession Planning Worksheet</div>
+          <div class="template-desc">A practical tool for identifying and developing internal successors for critical roles, with readiness ratings and development actions.</div>
+        </div>
+        <span class="template-dl">↓ Get</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
 <section class="work-section" id="work">
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">01 —</span>
-      <h2 class="section-title">Resources &amp; Frameworks</h2>
+      <h2 class="section-title">Insights</h2>
       <div class="section-rule"></div>
     </div>
     <div class="work-grid">
 
-      <a href="https://www.linkedin.com/posts/activity-7434946159628132352-Pviz?utm_source=share&utm_medium=member_desktop&rcm=ACoAABsBpQUBSNWBRRIGvlS0bdyFwva_brR1PL4" target="_blank" class="work-card memo-featured">
+      <a href="https://drive.google.com/file/d/1_wuEW4Cqp02NLkrV4zrzZpsp6uid6y71/view?usp=sharing" target="_blank" class="work-card memo-featured">
         <p class="work-tag">The Talent Memo™ · No. 01</p>
         <h3 class="work-card-title">The Onboarding Gap: Why Your New Hires Still Don't "Get It" Six Months In</h3>
         <p class="work-card-desc">Most onboarding programs check every box and miss every point. This memo names the three questions every new hire is quietly asking — and what actually changes when talent management starts on Day 1.</p>
@@ -739,7 +760,7 @@
         </div>
       </a>
 
-      <a href="https://www.linkedin.com/posts/activity-7437846708635525120-DbaA?utm_source=share&utm_medium=member_desktop&rcm=ACoAABsBpQUBSNWBRRIGvlS0bdyFwva_brR1PL4" target="_blank" class="work-card memo-featured">
+      <a href="https://drive.google.com/file/d/1jieWjX2bqa6VSUC06LrdfEykevRbSwPW/view?usp=sharing" target="_blank" class="work-card memo-featured">
         <p class="work-tag">The Talent Memo™ · No. 02</p>
         <h3 class="work-card-title">The Calibration Problem: Why the Best Managers Aren't Better Evaluators — They're Better Calibrators</h3>
         <p class="work-card-desc">Most managers jump straight to evaluation and skip the harder work: building shared clarity on what strong performance actually looks like. This memo breaks down what calibration actually is, why it gets skipped, and what changes when you get it right in the first 90 days.</p>
@@ -819,143 +840,6 @@
   </div>
 </section>
 
-<!-- IMPACT -->
-<section class="impact-section" id="impact">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-num">02 —</span>
-      <h2 class="section-title">Impact by the Numbers</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="impact-layout">
-      <div class="impact-intro">
-        <p class="impact-intro-text">
-          Numbers without context are noise. These are high-level signals — 
-          the full story, with org-specific context and supporting detail, 
-          lives in the résumé.
-        </p>
-        <a href="#contact" class="btn btn-primary">Let's connect</a>
-      </div>
-      <div class="impact-list">
-
-        <div class="impact-item">
-          <div class="impact-metric">93%</div>
-          <div>
-            <div class="impact-detail-title">Onboarding Satisfaction Score</div>
-            <div class="impact-detail-desc">Achieved on the first enterprise-wide onboarding program built from zero — alongside 100% completion rate and measurable reduction in new hire attrition across a multi-location network.</div>
-            <span class="impact-detail-org">Healthcare · Enterprise Program Build</span>
-          </div>
-        </div>
-
-        <div class="impact-item">
-          <div class="impact-metric">−25%</div>
-          <div>
-            <div class="impact-detail-title">Time-to-Productivity Improvement</div>
-            <div class="impact-detail-desc">Designed the full talent lifecycle framework — preboarding through offboarding — for a scaling tech organization, improving time-to-productivity across Product, Engineering, G&amp;A, and Sales.</div>
-            <span class="impact-detail-org">Tech · Talent Lifecycle Design</span>
-          </div>
-        </div>
-
-        <div class="impact-item">
-          <div class="impact-metric">95%</div>
-          <div>
-            <div class="impact-detail-title">Platform Adoption Rate</div>
-            <div class="impact-detail-desc">Led employee listening strategy and Culture Amp implementation, using AI-driven analytics to surface predictive engagement insights — achieving near-full adoption and enabling data-informed leadership decisions.</div>
-            <span class="impact-detail-org">Tech · Listening &amp; Engagement Infrastructure</span>
-          </div>
-        </div>
-
-        <div class="impact-item">
-          <div class="impact-metric">79%</div>
-          <div>
-            <div class="impact-detail-title">Offer Acceptance Rate</div>
-            <div class="impact-detail-desc">Achieved after modernizing recruiting workflows and implementing structured interview frameworks — alongside a 15% reduction in early attrition across a 400-person, 32-location healthcare organization.</div>
-            <span class="impact-detail-org">Healthcare · Talent Acquisition &amp; Retention</span>
-          </div>
-        </div>
-
-        <div class="impact-item">
-          <div class="impact-metric">3 of 3</div>
-          <div>
-            <div class="impact-detail-title">Performance Systems Built from Zero</div>
-            <div class="impact-detail-desc">Designed and operationalized end-to-end performance management — including goal-setting, calibration, 9-box reviews, and HiPo identification — at three organizations with no prior infrastructure.</div>
-            <span class="impact-detail-org">Multi-Org · Greenfield Infrastructure Builds</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEMPLATES -->
-<section class="templates-section" id="templates">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-num">03 —</span>
-      <h2 class="section-title">Tools &amp; Templates</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="templates-grid">
-
-      <a href="#" class="template-card">
-        <div class="template-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
-        <div class="template-info">
-          <div class="template-name">30-60-90 Day Leader Onboarding Plan</div>
-          <div class="template-desc">Milestone-based onboarding template for new leaders, with check-in structure and early-win framework.</div>
-        </div>
-        <span class="template-dl">↓ Get</span>
-      </a>
-
-      <a href="#" class="template-card">
-        <div class="template-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="var(--merlot)"/><line x1="12" y1="3" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21"/></svg></div>
-        <div class="template-info">
-          <div class="template-name">Competency Framework Builder</div>
-          <div class="template-desc">Role-level competency rubric adaptable across functions and career levels — from IC to VP.</div>
-        </div>
-        <span class="template-dl">↓ Get</span>
-      </a>
-
-      <a href="#" class="template-card">
-        <div class="template-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <div class="template-info">
-          <div class="template-name">Talent Review Calibration Guide</div>
-          <div class="template-desc">Facilitator guide for structured talent conversations, including 9-box integration and promotion readiness criteria.</div>
-        </div>
-        <span class="template-dl">↓ Get</span>
-      </a>
-
-      <a href="#" class="template-card">
-        <div class="template-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="13" x2="13" y2="13"/></svg></div>
-        <div class="template-info">
-          <div class="template-name">Manager 1:1 Conversation Framework</div>
-          <div class="template-desc">A structured weekly check-in template balancing performance, development, and wellbeing — with coaching prompts built in.</div>
-        </div>
-        <span class="template-dl">↓ Get</span>
-      </a>
-
-      <a href="#" class="template-card">
-        <div class="template-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="template-info">
-          <div class="template-name">Capability Needs Assessment</div>
-          <div class="template-desc">Diagnostic survey for surfacing skill gaps and development priorities at scale — with a built-in scoring matrix.</div>
-        </div>
-        <span class="template-dl">↓ Get</span>
-      </a>
-
-      <a href="#" class="template-card">
-        <div class="template-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
-        <div class="template-info">
-          <div class="template-name">Succession Planning Worksheet</div>
-          <div class="template-desc">A practical tool for identifying and developing internal successors for critical roles, with readiness ratings and development actions.</div>
-        </div>
-        <span class="template-dl">↓ Get</span>
-      </a>
-
-    </div>
-  </div>
-</section>
-
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="section-inner">
@@ -979,7 +863,7 @@
           view and a bias toward action.
         </p>
         <p>
-          I hold an M.S in Human Capital Analytics &amp; Technology from NYU, a SHRM-CP, and Scrum 
+          I hold an M.S. in Human Capital Analytics &amp; Technology from NYU, a SHRM-CP, and Scrum 
           certifications (CSM &amp; CSPO) — and I bring a product mindset to people work: building for 
           adoption, iterating based on feedback, and delivering outcomes that hold.
         </p>
@@ -1011,7 +895,7 @@
           </li>
           <li>
             <span class="cred-company">New York University</span>
-            <span class="cred-role">M.S · Human Capital Analytics &amp; Technology</span>
+            <span class="cred-role">M.S. · Human Capital Analytics &amp; Technology</span>
             <span class="cred-badge">Graduate</span>
           </li>
           <li>
