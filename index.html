@@ -23,7 +23,7 @@
       --sans:   'DM Sans', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 18px); }
     body {
       background: var(--cream);
       color: var(--ink);
@@ -34,13 +34,29 @@
     }
 
     /* NAV */
+    :root { --nav-h: 78px; }
+    body { padding-top: var(--nav-h); }
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 4rem;
-      background: rgba(250,246,244,0.96);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--rule);
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 99999 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 1.1rem 4rem !important;
+      min-height: var(--nav-h);
+      box-sizing: border-box;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      background: rgba(250,246,244,0.9);
+      -webkit-backdrop-filter: blur(18px) saturate(145%);
+      backdrop-filter: blur(18px) saturate(145%);
+      border-bottom: 1px solid rgba(232,216,220,0.96);
+      box-shadow: 0 10px 30px rgba(24,10,16,0.08);
     }
     .nav-logo {
       font-family: var(--serif);
@@ -61,13 +77,22 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--merlot); }
+    html body nav,
+    html body nav * {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    main, section, .hero, .content-wrap {
+      position: relative;
+      z-index: 1;
+    }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
+      min-height: calc(100vh - var(--nav-h));
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      padding-top: 72px;
+      padding-top: 0;
     }
     .hero-left {
       display: flex;
@@ -503,25 +528,89 @@
       color: rgba(250,246,244,0.78);
       margin-bottom: 1.5rem;
     }
-    .creds-list { list-style: none; margin-top: 0.5rem; }
-    .creds-list li {
-      display: flex;
+    .about-rail {
+      margin-top: 0.5rem;
+      display: grid;
+      gap: 2rem;
+    }
+    .about-group {
+      padding-top: 0.2rem;
+    }
+    .about-group:first-child .group-items {
+      border-top: 1px solid rgba(160,96,112,0.2);
+    }
+    .group-title {
+      margin-bottom: 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,246,244,0.58);
+    }
+    .group-items {
+      display: grid;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: minmax(150px, 170px) 1fr auto;
       gap: 1rem;
-      padding: 1.1rem 0;
+      align-items: start;
+      padding: 1.05rem 0;
       border-bottom: 1px solid rgba(160,96,112,0.2);
       font-size: 0.88rem;
     }
-    .creds-list li:first-child { border-top: 1px solid rgba(160,96,112,0.2); }
-    .cred-company { font-weight: 500; color: var(--blush); min-width: 140px; flex-shrink: 0; }
-    .cred-role { color: rgba(250,246,244,0.5); }
-    .cred-badge {
-      margin-left: auto;
+    .timeline-company {
+      font-weight: 500;
+      color: var(--blush);
+      line-height: 1.5;
+    }
+    .timeline-role {
+      color: rgba(250,246,244,0.56);
+      line-height: 1.65;
+      max-width: 32ch;
+    }
+    .timeline-meta {
+      justify-self: end;
+      align-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      white-space: nowrap;
       font-size: 0.64rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--sage);
-      align-self: center;
+    }
+    .timeline-meta.is-muted {
+      color: rgba(250,246,244,0.4);
+    }
+    .check-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.05rem;
+      height: 1.05rem;
+      border-radius: 999px;
+      border: 1px solid rgba(106,154,120,0.55);
+      color: var(--sage);
+      font-size: 0.72rem;
+      line-height: 1;
+      transform: translateY(-0.02rem);
+    }
+
+
+    @media (max-width: 1100px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+      }
+      .timeline-meta {
+        justify-self: start;
+      }
+      .timeline-role {
+        max-width: none;
+      }
     }
 
     /* CONTACT */
@@ -1038,110 +1127,623 @@ html, body {
   gtag('config', 'G-8SW3YZGTMV');
 </script>
 
-<style id="site-password-gate-styles">
-  #site-password-gate {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: rgba(250,246,244,0.98);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.25rem;
-  }
-  .site-password-panel {
-    width: 100%;
-    max-width: 460px;
-    background: #fff;
-    border: 1px solid #e8d8dc;
-    box-shadow: 0 18px 50px rgba(24,10,16,0.10);
-    padding: 2rem 1.5rem;
-    text-align: center;
-  }
-  .site-password-kicker {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #a06070;
-    margin-bottom: 0.9rem;
-  }
-  .site-password-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2rem, 6vw, 2.7rem);
-    line-height: 1.05;
-    color: #180a10;
-    margin-bottom: 0.6rem;
-    font-weight: 300;
-  }
-  .site-password-copy {
-    color: #7a5060;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 1.25rem;
-  }
-  .site-password-input {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border: 1px solid #e8d8dc;
-    background: #fff;
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-    outline: none;
-  }
-  .site-password-input:focus {
-    border-color: #a06070;
-  }
-  .site-password-actions {
-    display: flex;
-    gap: 0.75rem;
-  }
-  .site-password-actions button {
-    flex: 1;
-  }
-  .site-password-error {
-    min-height: 1.2em;
-    color: #5c2535;
-    font-size: 0.82rem;
-    margin-top: 0.7rem;
-  }
-  body.site-locked {
-    overflow: hidden;
+
+
+
+<style id="wow-motion-polish">
+  .hero-stats {
+    position: relative;
+    isolation: isolate;
   }
 
-  @media (max-width: 560px) {
-    .site-password-panel {
-      padding: 1.5rem 1rem;
+  .stat-cell {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    transform-origin: center;
+  }
+
+  .stat-cell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 42%),
+      linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 48%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+  }
+
+  .stat-cell:hover,
+  .stat-cell:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(24,10,16,0.14);
+    background: #65293b;
+  }
+
+  .stat-cell:hover::before,
+  .stat-cell:focus-within::before {
+    opacity: 1;
+  }
+
+  .stat-num {
+    font-variant-numeric: tabular-nums;
+    transition: color 0.22s ease, transform 0.22s ease, opacity 0.22s ease;
+    will-change: contents, transform;
+  }
+
+  .stat-label {
+    transition: color 0.22s ease, letter-spacing 0.22s ease;
+  }
+
+  .stat-cell:hover .stat-num,
+  .stat-cell:focus-within .stat-num {
+    color: #dca1b0;
+    transform: translateY(-1px);
+  }
+
+  .stat-cell:hover .stat-label,
+  .stat-cell:focus-within .stat-label {
+    color: rgba(250,246,244,0.78);
+    letter-spacing: 0.08em;
+  }
+
+  .impact-item {
+    position: relative;
+    transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+
+  .impact-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--blush), var(--merlot));
+    opacity: 0;
+    transform: scaleY(0.35);
+    transform-origin: center;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  .impact-item:hover,
+  .impact-item:focus-within {
+    background: linear-gradient(180deg, #fffefe 0%, #fcf8f7 100%);
+    transform: translateX(2px);
+    box-shadow: 0 18px 32px rgba(24,10,16,0.05);
+  }
+
+  .impact-item:hover::after,
+  .impact-item:focus-within::after {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .impact-metric {
+    font-variant-numeric: tabular-nums;
+    transition: color 0.22s ease, font-weight 0.22s ease, transform 0.22s ease, letter-spacing 0.22s ease;
+  }
+
+  .impact-item:hover .impact-metric,
+  .impact-item:focus-within .impact-metric {
+    color: var(--wine);
+    font-weight: 500;
+    transform: translateX(4px);
+    letter-spacing: -0.01em;
+  }
+
+  .impact-item:hover .impact-detail-title,
+  .impact-item:focus-within .impact-detail-title {
+    color: var(--wine);
+  }
+
+  .impact-item:hover .impact-detail-org,
+  .impact-item:focus-within .impact-detail-org {
+    color: #547e61;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-cell,
+    .impact-item,
+    .stat-num,
+    .stat-label,
+    .impact-metric {
+      transition: none !important;
+      animation: none !important;
     }
-    .site-password-actions {
+  }
+</style>
+
+
+<style id="hero-countup-css">
+  .stat-num {
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+
+
+<style id="premium-portfolio-enhancements">
+  :root{
+    --shadow-soft: 0 18px 50px rgba(24,10,16,0.08);
+    --shadow-hover: 0 24px 60px rgba(24,10,16,0.14);
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(160,96,112,0.08), transparent 28%),
+      radial-gradient(circle at 85% 18%, rgba(106,154,120,0.06), transparent 24%);
+    z-index:0;
+  }
+
+  nav{
+    box-shadow: 0 8px 30px rgba(24,10,16,0.04);
+  }
+
+  .hero,
+  section,
+  footer,
+  nav{
+    position:relative;
+    z-index:1;
+  }
+
+  .hero-right{
+    isolation:isolate;
+  }
+
+  .hero-right::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 22% 18%, rgba(255,255,255,0.12), transparent 30%),
+      radial-gradient(circle at 78% 22%, rgba(160,96,112,0.18), transparent 34%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .hero-photo-wrap{
+    transform-style: preserve-3d;
+    perspective: 1200px;
+  }
+
+  .hero-photo-wrap img{
+    transition: transform .45s cubic-bezier(.22,1,.36,1), filter .35s ease;
+    will-change: transform;
+  }
+
+  .hero-stats{
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero-stats::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 45%, rgba(255,255,255,0.02));
+    pointer-events:none;
+  }
+
+  .stat-cell{
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    transition:
+      transform .24s cubic-bezier(.22,1,.36,1),
+      box-shadow .24s ease,
+      background .24s ease,
+      border-color .24s ease;
+    will-change: transform;
+  }
+
+  .stat-cell.magnetic-hover:hover,
+  .stat-cell.magnetic-hover:focus-within{
+    background:#65293b;
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(220,161,176,0.18);
+  }
+
+  .stat-num{
+    font-variant-numeric: tabular-nums;
+    transition: color .22s ease, transform .22s ease, text-shadow .22s ease;
+  }
+
+  .stat-label{
+    transition: color .22s ease, letter-spacing .22s ease, transform .22s ease;
+  }
+
+  .stat-cell:hover .stat-num,
+  .stat-cell:focus-within .stat-num{
+    color:#dca1b0;
+    text-shadow: 0 10px 24px rgba(24,10,16,0.18);
+  }
+
+  .stat-cell:hover .stat-label,
+  .stat-cell:focus-within .stat-label{
+    color: rgba(250,246,244,0.78);
+    letter-spacing: .08em;
+  }
+
+  .work-card,
+  .template-card,
+  .technology-card{
+    transition:
+      transform .26s cubic-bezier(.22,1,.36,1),
+      box-shadow .26s ease,
+      background .26s ease,
+      border-color .26s ease;
+    will-change: transform;
+  }
+
+  .work-card:hover,
+  .template-card:hover,
+  .technology-card:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .impact-item{
+    transition:
+      transform .24s cubic-bezier(.22,1,.36,1),
+      box-shadow .24s ease,
+      background .24s ease;
+  }
+
+  .impact-item:hover,
+  .impact-item:focus-within{
+    transform: translateX(4px);
+    box-shadow: 0 18px 40px rgba(24,10,16,0.06);
+  }
+
+  .reveal-up{
+    opacity:0;
+    transform: translateY(30px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);
+  }
+
+  .reveal-up.is-visible{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  .cursor-halo{
+    position:fixed;
+    width:220px;
+    height:220px;
+    border-radius:999px;
+    pointer-events:none;
+    z-index:2;
+    background: radial-gradient(circle, rgba(160,96,112,0.08) 0%, rgba(160,96,112,0.035) 32%, transparent 68%);
+    mix-blend-mode:multiply;
+    transform: translate(-50%, -50%);
+    opacity:0;
+    transition: opacity .25s ease;
+  }
+
+  @media (max-width: 900px){
+    .cursor-halo{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-photo-wrap img,
+    .stat-cell,
+    .stat-num,
+    .stat-label,
+    .work-card,
+    .template-card,
+    .technology-card,
+    .impact-item,
+    .reveal-up{
+      transition:none !important;
+      transform:none !important;
+      animation:none !important;
+      opacity:1 !important;
+    }
+  }
+</style>
+
+
+<style id="hero-gradient-and-page-lock">
+  .hero-left {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.78) 0%, rgba(250,246,244,0.94) 24%, rgba(250,246,244,1) 54%),
+      radial-gradient(circle at 18% 26%, rgba(106,154,120,0.18), transparent 36%),
+      radial-gradient(circle at 22% 60%, rgba(160,96,112,0.16), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,0.72), rgba(250,246,244,0.94));
+  }
+
+  .hero-left::before,
+  .hero-left::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-left::before {
+    background:
+      radial-gradient(circle at 0% 50%, rgba(106,154,120,0.30) 0%, rgba(106,154,120,0.14) 18%, transparent 42%),
+      radial-gradient(circle at 10% 22%, rgba(160,96,112,0.20) 0%, transparent 30%),
+      linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.30) 42%, transparent 68%);
+    mix-blend-mode: multiply;
+  }
+
+  .hero-left::after {
+    width: 180px;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, rgba(106,154,120,0.18) 0%, rgba(106,154,120,0.08) 35%, rgba(160,96,112,0.05) 68%, transparent 100%);
+    filter: blur(2px);
+  }
+
+  .hero-left > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow,
+  .hero-title {
+    max-width: 34rem;
+  }
+
+  .hero-quote {
+    position: relative;
+    max-width: 42rem;
+    margin: 0 0 2.3rem;
+    padding: 1.35rem 0 1.1rem 3.1rem;
+  }
+
+  .hero-quote::before,
+  .hero-quote::after {
+    position: absolute;
+    font-family: var(--serif);
+    color: rgba(92,37,53,0.18);
+    line-height: 1;
+    pointer-events: none;
+    animation: quoteFloat 5.8s ease-in-out infinite;
+  }
+
+  .hero-quote::before {
+    content: "\201C";
+    left: 0;
+    top: -0.35rem;
+    font-size: clamp(4.2rem, 8vw, 6.5rem);
+  }
+
+  .hero-quote::after {
+    content: "\201D";
+    right: 0.35rem;
+    bottom: -1.55rem;
+    font-size: clamp(3.4rem, 6vw, 5rem);
+    animation-delay: 1.2s;
+  }
+
+  .hero-quote p {
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.38vw, 1.34rem);
+    line-height: 1.62;
+    color: #5a3341;
+    margin-bottom: 1rem;
+    max-width: 38rem;
+  }
+
+  .hero-quote p:last-child {
+    margin-bottom: 0;
+  }
+
+  @keyframes quoteFloat {
+    0%, 100% { transform: translateY(0px); opacity: 0.95; }
+    50% { transform: translateY(-8px); opacity: 1; }
+  }
+
+  .hero-photo-wrap {
+    min-height: clamp(560px, 76vh, 980px);
+    display: flex;
+    align-items: stretch;
+    background:
+      radial-gradient(circle at 50% 16%, rgba(255,255,255,0.18), transparent 28%),
+      linear-gradient(180deg, rgba(92,37,53,0.22), rgba(46,21,32,0.10));
+  }
+
+  .hero-photo-wrap img {
+    width: 100%;
+    height: calc(100% + 88px);
+    object-fit: cover;
+    object-position: center 6%;
+    transform: translateY(-34px) scale(1.03);
+  }
+
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(46,21,32,0.04) 0%, rgba(46,21,32,0) 28%, rgba(46,21,32,0.12) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  body.page-locked {
+    overflow: hidden !important;
+  }
+
+  .page-lock-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background:
+      linear-gradient(135deg, rgba(24,10,16,0.82), rgba(46,21,32,0.88)),
+      radial-gradient(circle at 18% 22%, rgba(106,154,120,0.16), transparent 26%),
+      radial-gradient(circle at 82% 18%, rgba(160,96,112,0.16), transparent 24%);
+    backdrop-filter: blur(14px);
+  }
+
+  .page-lock-overlay.is-active {
+    display: flex;
+  }
+
+  .page-lock-card {
+    width: min(560px, calc(100vw - 2.5rem));
+    background: rgba(250,246,244,0.97);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 30px 80px rgba(24,10,16,0.34);
+    padding: 2.15rem 2rem 1.85rem;
+    border-radius: 0;
+  }
+
+  .page-lock-kicker {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--merlot);
+    margin-bottom: 0.85rem;
+  }
+
+  .page-lock-title {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 3.2vw, 2.35rem);
+    font-weight: 300;
+    line-height: 1.04;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+
+  .page-lock-copy {
+    font-size: 0.94rem;
+    line-height: 1.72;
+    color: var(--muted);
+    margin-bottom: 1.15rem;
+    max-width: 32rem;
+  }
+
+  .page-lock-input {
+    width: 100%;
+    min-height: 54px;
+    padding: 0.95rem 1rem;
+    border: 1px solid #d9b8c1;
+    background: white;
+    font-family: var(--sans);
+    font-size: 0.96rem;
+    color: var(--ink);
+    margin-bottom: 0.65rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .page-lock-input:focus {
+    border-color: var(--blush);
+    box-shadow: 0 0 0 3px rgba(160,96,112,0.10);
+  }
+
+  .page-lock-error {
+    min-height: 1rem;
+    display: block;
+    margin-bottom: 0.9rem;
+    color: var(--merlot);
+    font-size: 0.78rem;
+  }
+
+  .page-lock-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .page-lock-actions .btn {
+    min-height: 42px;
+    padding: 0.82rem 1.7rem;
+  }
+
+  .page-lock-note {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .hero-quote {
+      padding: 1rem 0 0.85rem 2.2rem;
+      margin-bottom: 1.85rem;
+    }
+
+    .hero-quote::before {
+      font-size: clamp(3.2rem, 13vw, 4.5rem);
+      top: -0.2rem;
+    }
+
+    .hero-quote::after {
+      right: 0;
+      bottom: -1rem;
+      font-size: clamp(2.8rem, 11vw, 4rem);
+    }
+
+    .hero-left {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(250,246,244,0.98) 100%),
+        radial-gradient(circle at 12% 24%, rgba(106,154,120,0.14), transparent 30%),
+        radial-gradient(circle at 14% 70%, rgba(160,96,112,0.12), transparent 30%);
+    }
+
+    .hero-left::after {
+      width: 110px;
+    }
+
+    .hero-photo-wrap {
+      min-height: clamp(380px, 58vh, 620px);
+    }
+
+    .hero-photo-wrap img {
+      height: calc(100% + 42px);
+      object-position: center 10%;
+      transform: translateY(-12px) scale(1.025);
+    }
+
+    .page-lock-card {
+      width: min(560px, calc(100vw - 1.5rem));
+      padding: 1.85rem 1.35rem 1.45rem;
+    }
+
+    .page-lock-actions {
       flex-direction: column;
+    }
+
+    .page-lock-actions .btn {
+      width: 100%;
     }
   }
 </style>
 
 </head>
-<body>
+<body class="page-locked">
 
-<div id="site-password-gate" aria-modal="true" role="dialog" aria-labelledby="sitePasswordTitle">
-  <div class="site-password-panel">
-    <div class="site-password-kicker">Private Preview</div>
-    <h1 class="site-password-title" id="sitePasswordTitle">Paula R. Duverné</h1>
-    <p class="site-password-copy">This portfolio is currently password protected while it is still in progress.</p>
-    <input
-      type="password"
-      id="sitePasswordInput"
-      class="site-password-input"
-      placeholder="Enter password"
-      autocomplete="current-password"
-      onkeydown="if(event.key==='Enter'){unlockSite();}"
-    />
-    <div class="site-password-actions">
-      <button class="btn btn-secondary" type="button" onclick="clearSitePassword()">Clear</button>
-      <button class="btn btn-primary" type="button" onclick="unlockSite()">Enter</button>
+<div class="page-lock-overlay" id="pageLockOverlay" aria-hidden="true">
+  <div class="page-lock-card" role="dialog" aria-modal="true" aria-labelledby="pageLockTitle">
+    <div class="page-lock-kicker">Portfolio update in progress</div>
+    <h2 class="page-lock-title" id="pageLockTitle">This page is being refreshed and will be available soon.</h2>
+    <p class="page-lock-copy">Thanks for stopping by. I am currently updating this portfolio to reflect new work, refined case studies, and a more polished experience.</p>
+    <input class="page-lock-input" type="password" id="pageLockInput" placeholder="Enter page password" onkeydown="if(event.key==='Enter') submitPagePassword()" />
+    <span class="page-lock-error" id="pageLockError"></span>
+    <div class="page-lock-actions">
+      <button class="btn btn-primary" type="button" onclick="submitPagePassword()">Enter preview</button>
+      <button class="btn btn-secondary" type="button" onclick="clearPagePasswordField()">Clear</button>
     </div>
-    <div class="site-password-error" id="sitePasswordError"></div>
-  </div>
+      </div>
+</div>
+
+
+
 </div>
 
 
@@ -1178,7 +1780,7 @@ html, body {
   <div class="hero-left">
     <p class="hero-eyebrow">People &amp; Talent · SHRM-CP · M.S. NYU</p>
     <h1 class="hero-name">Paula R.<br><em>Duverné</em></h1>
-    <p class="hero-title">People Strategy &middot; Talent Management &middot;  &middot; Organizational Effectiveness</p>
+    <p class="hero-title">People Strategy &middot; Talent Management &middot; Organizational Effectiveness</p>
     <p class="hero-bio">
       I build the infrastructure behind high-performing organizations — 
       talent strategy, performance systems, capability frameworks, and the 
@@ -1193,19 +1795,19 @@ html, body {
     </div>
     <div class="hero-stats">
       <div class="stat-cell">
-        <div class="stat-num">12+</div>
+        <div class="stat-num" data-count-to="12" data-suffix="+">12+</div>
         <div class="stat-label">Years in People &amp; Talent</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num">20K+</div>
+        <div class="stat-num" data-count-to="20" data-suffix="K+">20K+</div>
         <div class="stat-label">Employees Supported</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num">5</div>
+        <div class="stat-num" data-count-to="5">5</div>
         <div class="stat-label">Industries &amp; Orgs</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num">4</div>
+        <div class="stat-num" data-count-to="4">4</div>
         <div class="stat-label">Credentials · M.S., SHRM-CP, CSM, CSPO</div>
       </div>
 </div>
@@ -1232,7 +1834,7 @@ html, body {
       <div class="impact-list">
 
         <div class="impact-item">
-          <div class="impact-metric">93%</div>
+          <div class="impact-metric" data-impact-metric="true">93%</div>
           <div>
             <div class="impact-detail-title">Onboarding Satisfaction Score</div>
             <div class="impact-detail-desc">Achieved on the first enterprise-wide onboarding program built from zero — alongside 100% completion rate and measurable reduction in new hire attrition across a multi-location network.</div>
@@ -1241,7 +1843,7 @@ html, body {
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">−25%</div>
+          <div class="impact-metric" data-impact-metric="true">−25%</div>
           <div>
             <div class="impact-detail-title">Time-to-Productivity Improvement</div>
             <div class="impact-detail-desc">Designed the full talent lifecycle framework — preboarding through offboarding — for a scaling tech organization, improving time-to-productivity across Product, Engineering, G&amp;A, and Sales.</div>
@@ -1250,7 +1852,7 @@ html, body {
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">95%</div>
+          <div class="impact-metric" data-impact-metric="true">95%</div>
           <div>
             <div class="impact-detail-title">Platform Adoption Rate</div>
             <div class="impact-detail-desc">Led employee listening strategy and Culture Amp implementation, using AI-driven analytics to surface predictive engagement insights — achieving near-full adoption and enabling data-informed leadership decisions.</div>
@@ -1259,7 +1861,7 @@ html, body {
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">79%</div>
+          <div class="impact-metric" data-impact-metric="true">79%</div>
           <div>
             <div class="impact-detail-title">Offer Acceptance Rate</div>
             <div class="impact-detail-desc">Achieved after modernizing recruiting workflows and implementing structured interview frameworks — alongside a 15% reduction in early attrition across a 400-person, 32-location healthcare organization.</div>
@@ -1268,7 +1870,7 @@ html, body {
         </div>
 
         <div class="impact-item">
-          <div class="impact-metric">3 of 3</div>
+          <div class="impact-metric" data-impact-metric="true">3 of 3</div>
           <div>
             <div class="impact-detail-title">Performance Systems Built from Zero</div>
             <div class="impact-detail-desc">Designed and operationalized end-to-end performance management — including goal-setting, calibration, 9-box reviews, and HiPo identification — at three organizations with no prior infrastructure.</div>
@@ -1495,49 +2097,69 @@ html, body {
           <a href="#contact" class="btn btn-primary" style="background:var(--blush); border-color:var(--blush);">Get in touch</a>
         </div>
       </div>
-      <div>
-        <ul class="creds-list">
-          <li>
-            <span class="cred-company">TAG · The Aspen Group</span>
-            <span class="cred-role">Senior Manager, People &amp; Commercial Strategy</span>
-          </li>
-          <li>
-            <span class="cred-company">Celsius</span>
-            <span class="cred-role">Project Manager, Global Talent &amp; Workforce Strategy</span>
-          </li>
-          <li>
-            <span class="cred-company">Arcadia</span>
-            <span class="cred-role">Program Manager, People Operations &amp; Talent Strategy</span>
-          </li>
-          <li>
-            <span class="cred-company">Medisys Health Network</span>
-            <span class="cred-role">HR Lead, Talent &amp; People Operations</span>
-          </li>
-          <li>
-            <span class="cred-company">Capital One</span>
-            <span class="cred-role">Principal, Commercial Ops &amp; Org Effectiveness</span>
-          </li>
-          <li>
-            <span class="cred-company">New York University</span>
-            <span class="cred-role">M.S. · Human Capital Analytics &amp; Technology</span>
-            <span class="cred-badge">Graduate</span>
-          </li>
-          <li>
-            <span class="cred-company">CUNY York College</span>
-            <span class="cred-role">B.S. · Business Administration, Human Resource Management</span>
-            <span class="cred-badge">Graduate</span>
-          </li>
-          <li>
-            <span class="cred-company">SHRM-CP</span>
-            <span class="cred-role">Society for Human Resource Management</span>
-            <span class="cred-badge">Certified</span>
-          </li>
-          <li>
-            <span class="cred-company">CSM · CSPO</span>
-            <span class="cred-role">Certified Scrum Master &amp; Product Owner · Scrum Alliance</span>
-            <span class="cred-badge">Certified</span>
-          </li>
-        </ul>
+      <div class="about-rail">
+        <div class="about-group">
+          <div class="group-title">Experience</div>
+          <div class="group-items">
+            <div class="timeline-item">
+              <div class="timeline-company">TAG · The Aspen Group</div>
+              <div class="timeline-role">Senior Manager, People &amp; Commercial Strategy</div>
+              <div class="timeline-meta"><span class="check-mark">✓</span><span>Current</span></div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-company">Celsius</div>
+              <div class="timeline-role">Project Manager, Global Talent &amp; Workforce Strategy</div>
+              <div class="timeline-meta is-muted">Past</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-company">Arcadia</div>
+              <div class="timeline-role">Program Manager, People Operations &amp; Talent Strategy</div>
+              <div class="timeline-meta is-muted">Past</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-company">Medisys Health Network</div>
+              <div class="timeline-role">HR Lead, Talent &amp; People Operations</div>
+              <div class="timeline-meta is-muted">Past</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-company">Capital One</div>
+              <div class="timeline-role">Principal, Commercial Ops &amp; Org Effectiveness</div>
+              <div class="timeline-meta is-muted">Past</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-group">
+          <div class="group-title">Education</div>
+          <div class="group-items">
+            <div class="timeline-item">
+              <div class="timeline-company">New York University</div>
+              <div class="timeline-role">M.S. · Human Capital Analytics &amp; Technology</div>
+              <div class="timeline-meta">Graduate</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-company">CUNY York College</div>
+              <div class="timeline-role">B.S. · Business Administration, Human Resource Management</div>
+              <div class="timeline-meta">Graduate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-group">
+          <div class="group-title">Certifications</div>
+          <div class="group-items">
+            <div class="timeline-item">
+              <div class="timeline-company">SHRM-CP</div>
+              <div class="timeline-role">Society for Human Resource Management</div>
+              <div class="timeline-meta">Certified</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-company">CSM · CSPO</div>
+              <div class="timeline-role">Certified Scrum Master &amp; Product Owner · Scrum Alliance</div>
+              <div class="timeline-meta">Certified</div>
+            </div>
+          </div>
+        </div>
       </div>
 </div>
   </div>
@@ -1765,127 +2387,347 @@ html, body {
 </script>
 
 
-<script id="site-protection-and-analytics">
-  (function () {
-    const SITE_PASSWORD = "Duverne2026";
-    const STORAGE_KEY = "paula_portfolio_access_v1";
 
-    function sendAnalyticsEvent(name, params) {
-      if (typeof gtag === "function") {
-        gtag("event", name, params || {});
-      }
-    }
 
-    function normalizeText(value) {
-      return (value || "").replace(/\s+/g, " ").trim();
-    }
 
-    function getClickLabel(el) {
-      if (!el) return "unknown";
-      return normalizeText(
-        el.getAttribute("data-analytics-label") ||
-        el.getAttribute("aria-label") ||
-        el.textContent ||
-        el.getAttribute("href") ||
-        el.id ||
-        el.className ||
-        "unknown"
-      ).slice(0, 120);
-    }
 
-    function getClickType(el) {
-      if (!el) return "unknown";
-      if (el.matches("button")) return "button";
-      if (el.matches("a")) return "link";
-      if (el.matches("[role='button']")) return "role-button";
-      return el.tagName ? el.tagName.toLowerCase() : "unknown";
-    }
 
-    function unlockGateUI() {
-      const gate = document.getElementById("site-password-gate");
-      if (gate) gate.style.display = "none";
-      document.body.classList.remove("site-locked");
-      const input = document.getElementById("sitePasswordInput");
-      if (input) input.blur();
-    }
 
-    function lockGateUI() {
-      document.body.classList.add("site-locked");
-      const gate = document.getElementById("site-password-gate");
-      if (gate) gate.style.display = "flex";
-    }
+<script id="hero-countup-stepped-test">
+(function () {
+  function runCounters() {
+    var counters = document.querySelectorAll('.hero-stats .stat-num[data-count-to]');
+    if (!counters.length) return;
 
-    window.clearSitePassword = function () {
-      const input = document.getElementById("sitePasswordInput");
-      const err = document.getElementById("sitePasswordError");
-      if (input) input.value = "";
-      if (err) err.textContent = "";
-    };
+    counters.forEach(function (el) {
+      if (el.dataset.countAnimated === 'true') return;
+      el.dataset.countAnimated = 'true';
 
-    window.unlockSite = function () {
-      const input = document.getElementById("sitePasswordInput");
-      const err = document.getElementById("sitePasswordError");
-      const value = input ? input.value : "";
+      var target = parseInt(el.getAttribute('data-count-to') || '0', 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var current = 0;
+      var totalDuration = 1800;
+      var interval = Math.max(55, Math.round(totalDuration / Math.max(target, 1)));
 
-      if (value === SITE_PASSWORD) {
-        sessionStorage.setItem(STORAGE_KEY, "granted");
-        unlockGateUI();
-        sendAnalyticsEvent("site_unlock", {
-          event_category: "portfolio_access",
-          event_label: "password_success"
-        });
-      } else {
-        if (err) err.textContent = "Incorrect password.";
-        sendAnalyticsEvent("site_unlock_failed", {
-          event_category: "portfolio_access",
-          event_label: "password_failure"
-        });
-      }
-    };
+      el.textContent = '0' + suffix;
 
-    document.addEventListener("DOMContentLoaded", function () {
-      if (sessionStorage.getItem(STORAGE_KEY) === "granted") {
-        unlockGateUI();
-      } else {
-        lockGateUI();
-      }
+      var timer = setInterval(function () {
+        current += 1;
+        el.textContent = current + suffix;
 
-      document.addEventListener("click", function (event) {
-        const clickable = event.target.closest("a, button, .work-card, .template-card, .carousel-btn, .carousel-dot, .nav-logo, .nav-links a");
-        if (!clickable) return;
-
-        sendAnalyticsEvent("portfolio_click", {
-          event_category: "portfolio_interaction",
-          event_label: getClickLabel(clickable),
-          click_type: getClickType(clickable),
-          link_url: clickable.getAttribute("href") || ""
-        });
-      }, true);
-
-      document.addEventListener("submit", function (event) {
-        const form = event.target;
-        sendAnalyticsEvent("portfolio_submit", {
-          event_category: "portfolio_interaction",
-          event_label: getClickLabel(form),
-          form_id: form.id || ""
-        });
-      }, true);
-
-      const observer = new MutationObserver(function () {
-        const modal = document.getElementById("resumeModal");
-        if (modal && modal.classList.contains("open")) {
-          sendAnalyticsEvent("resume_modal_open", {
-            event_category: "portfolio_interaction",
-            event_label: "resume modal"
-          });
+        if (current >= target) {
+          clearInterval(timer);
+          el.textContent = target + suffix;
         }
-      });
-
-      const body = document.body;
-      if (body) observer.observe(body, { attributes: true, childList: true, subtree: true });
+      }, interval);
     });
-  })();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(runCounters, 350);
+    });
+  } else {
+    setTimeout(runCounters, 350);
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(runCounters, 350);
+  });
+})();
 </script>
 
+
+<script id="premium-portfolio-enhancements-script">
+(function () {
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function setupCursorHalo() {
+    if (window.innerWidth <= 900 || prefersReducedMotion()) return;
+    var halo = document.createElement('div');
+    halo.className = 'cursor-halo';
+    document.body.appendChild(halo);
+
+    window.addEventListener('mousemove', function (e) {
+      halo.style.opacity = '1';
+      halo.style.left = e.clientX + 'px';
+      halo.style.top = e.clientY + 'px';
+    });
+
+    window.addEventListener('mouseleave', function () {
+      halo.style.opacity = '0';
+    });
+  }
+
+  function setupReveal() {
+    var targets = document.querySelectorAll('.section-header, .work-grid, .impact-layout, .templates-grid, .technology-grid, .about-layout, .contact-inner');
+    targets.forEach(function (el) { el.classList.add('reveal-up'); });
+    if (prefersReducedMotion()) {
+      targets.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
+  function setupHeroImageDepth() {
+    var hero = document.querySelector('.hero-right');
+    var image = document.querySelector('.hero-photo-wrap img');
+    if (!hero || !image || prefersReducedMotion()) return;
+
+    function reset() {
+      image.style.transform = 'scale(1.015) translate3d(0,0,0)';
+      image.style.filter = '';
+    }
+
+    hero.addEventListener('mousemove', function (e) {
+      var rect = hero.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      var x = px * 10;
+      var y = py * 10;
+      image.style.transform = 'scale(1.04) translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
+      image.style.filter = 'saturate(1.03) contrast(1.02)';
+    });
+
+    hero.addEventListener('mouseleave', reset);
+    reset();
+  }
+
+  function parseStatTargets() {
+    var nums = document.querySelectorAll('.hero-stats .stat-num');
+    nums.forEach(function (el) {
+      if (el.dataset.target) return;
+      var raw = (el.textContent || '').trim();
+      if (!raw) return;
+
+      var suffix = '';
+      var target = 0;
+
+      if (raw.indexOf('20K+') !== -1) {
+        target = 20;
+        suffix = 'K+';
+      } else if (raw.indexOf('12+') !== -1) {
+        target = 12;
+        suffix = '+';
+      } else {
+        var digits = raw.replace(/[^0-9]/g, '');
+        target = parseInt(digits || '0', 10);
+        suffix = raw.replace(/[0-9]/g, '').trim();
+      }
+
+      el.dataset.target = String(target);
+      el.dataset.suffix = suffix;
+    });
+  }
+
+  function animateCount(el, duration, delay) {
+    if (!el || el.dataset.countStarted === 'true') return;
+    el.dataset.countStarted = 'true';
+
+    var target = parseInt(el.dataset.target || '0', 10);
+    var suffix = el.dataset.suffix || '';
+    var startTime = null;
+
+    function formatValue(value) {
+      return Math.floor(value).toLocaleString() + suffix;
+    }
+
+    function startAnim() {
+      if (prefersReducedMotion()) {
+        el.textContent = target.toLocaleString() + suffix;
+        return;
+      }
+
+      el.textContent = formatValue(0);
+
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = target * eased;
+        el.textContent = formatValue(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target.toLocaleString() + suffix;
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    window.setTimeout(startAnim, delay || 0);
+  }
+
+  function setupCountUp() {
+    parseStatTargets();
+    var statNums = Array.prototype.slice.call(document.querySelectorAll('.hero-stats .stat-num[data-target]'));
+    var wrap = document.querySelector('.hero-stats');
+    if (!wrap || !statNums.length) return;
+
+    function startAll() {
+      statNums.forEach(function (el, index) {
+        var isTwentyK = (el.dataset.suffix || '') === 'K+' && parseInt(el.dataset.target || '0', 10) === 20;
+        var delay = isTwentyK ? 700 : index * 140;
+        var duration = isTwentyK ? 2200 : 1350;
+        animateCount(el, duration, delay);
+      });
+    }
+
+    if (prefersReducedMotion()) {
+      startAll();
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          startAll();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.45 });
+
+    io.observe(wrap);
+  }
+
+  function setupMagneticStats() {
+    if (prefersReducedMotion()) return;
+    var cards = document.querySelectorAll('.hero-stats .stat-cell');
+    cards.forEach(function (card) {
+      card.classList.add('magnetic-hover');
+      var number = card.querySelector('.stat-num');
+      var label = card.querySelector('.stat-label');
+
+      function reset() {
+        card.style.transform = '';
+        if (number) number.style.transform = '';
+        if (label) label.style.transform = '';
+      }
+
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var px = (x / rect.width) - 0.5;
+        var py = (y / rect.height) - 0.5;
+        card.style.transform = 'translate(' + (px * 8).toFixed(2) + 'px,' + (py * 8).toFixed(2) + 'px)';
+        if (number) number.style.transform = 'translate(' + (px * 9).toFixed(2) + 'px,' + (py * 9).toFixed(2) + 'px)';
+        if (label) label.style.transform = 'translate(' + (px * 5).toFixed(2) + 'px,' + (py * 5).toFixed(2) + 'px)';
+      });
+
+      card.addEventListener('mouseleave', reset);
+      card.addEventListener('blur', reset, true);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setupCursorHalo();
+    setupReveal();
+    setupHeroImageDepth();
+    setupMagneticStats();
+    setupCountUp();
+  });
+})();
+</script>
+
+
+<script id="page-lock-script">
+  const PAGE_PASSWORD = "Duverne2026";
+  const PAGE_LOCK_STORAGE_KEY = 'paula-portfolio-page-unlocked';
+
+  function getPageLockElements() {
+    return {
+      overlay: document.getElementById('pageLockOverlay'),
+      input: document.getElementById('pageLockInput'),
+      error: document.getElementById('pageLockError')
+    };
+  }
+
+  function showPageLock() {
+    const { overlay, input, error } = getPageLockElements();
+    document.body.classList.add('page-locked');
+    overlay.classList.add('is-active');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (error) error.textContent = '';
+    window.setTimeout(function () {
+      if (input) input.focus();
+    }, 60);
+  }
+
+  function hidePageLock() {
+    const { overlay, error, input } = getPageLockElements();
+    document.body.classList.remove('page-locked');
+    overlay.classList.remove('is-active');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (error) error.textContent = '';
+    if (input) input.value = '';
+  }
+
+  function clearPagePasswordField() {
+    const { input, error } = getPageLockElements();
+    if (input) input.value = '';
+    if (error) error.textContent = '';
+    if (input) input.focus();
+  }
+
+  function submitPagePassword() {
+    const { input, error } = getPageLockElements();
+    const val = input ? input.value : '';
+
+    if (val === PAGE_PASSWORD) {
+      sessionStorage.setItem(PAGE_LOCK_STORAGE_KEY, 'true');
+      hidePageLock();
+      return;
+    }
+
+    if (error) error.textContent = 'Incorrect password. Please try again.';
+    if (input) {
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (sessionStorage.getItem(PAGE_LOCK_STORAGE_KEY) === 'true') {
+      hidePageLock();
+    } else {
+      showPageLock();
+    }
+  });
+</script>
+
+
+<script>
+(function(){
+  const nav = document.querySelector('nav');
+  if(!nav) return;
+  const applyNavLock = () => {
+    nav.style.position = 'fixed';
+    nav.style.top = '0';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.width = '100%';
+    nav.style.zIndex = '99999';
+    nav.style.opacity = '1';
+    nav.style.visibility = 'visible';
+    nav.style.transform = 'translateY(0)';
+  };
+  applyNavLock();
+  window.addEventListener('scroll', applyNavLock, { passive: true });
+  window.addEventListener('resize', applyNavLock);
+})();
+</script>
 </body>
 </html>
