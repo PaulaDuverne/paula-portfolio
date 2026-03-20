@@ -2295,10 +2295,10 @@ letter-spacing:.04em;
 </style>
 
 <style id="onboarding-case-study-card-upgrade">
-  .impact-item.is-linked { cursor: pointer; }
-  .impact-item.is-linked .impact-case-link { position: relative; }
-  .impact-item.is-linked:hover .impact-case-link,
-  .impact-item.is-linked:focus-within .impact-case-link { color: var(--wine); }
+  .impact-item { cursor: default; }
+  .impact-case-link { position: relative; }
+  .impact-item:hover .impact-case-link,
+  .impact-item:focus-within .impact-case-link { color: var(--wine); }
   .impact-case-link::after {
     content: "";
     display: inline-block;
@@ -2309,8 +2309,8 @@ letter-spacing:.04em;
     vertical-align: middle;
     transition: transform 0.2s ease;
   }
-  .impact-item.is-linked:hover .impact-case-link::after,
-  .impact-item.is-linked:focus-within .impact-case-link::after { transform: translateX(3px); }
+  .impact-item:hover .impact-case-link::after,
+  .impact-item:focus-within .impact-case-link::after { transform: translateX(3px); }
 
 .updated-study-name{
   color: var(--sage);
@@ -2321,28 +2321,6 @@ letter-spacing:.04em;
 }
 
 </style>
-<script id="onboarding-case-study-card-script">
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.impact-item.is-linked').forEach(function(card){
-    var href = card.getAttribute('data-card-link');
-    if (!href) return;
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'link');
-    card.addEventListener('click', function(e){
-      if (e.target.closest('a, button, input, textarea, select')) return;
-      window.open(href, '_blank', 'noopener,noreferrer');
-    });
-    card.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        window.open(href, '_blank', 'noopener,noreferrer');
-      }
-    });
-  });
-});
-</script>
-
-
 <style id="resume-tooltip-fix">
 .resume-tooltip-wrap{
   position: relative;
@@ -2414,6 +2392,102 @@ document.addEventListener('DOMContentLoaded', function () {
   letter-spacing: 0.16em;
 }
 
+</style>
+
+
+<style id="impact-tile-optimization">
+  /* Selected Impact tile optimization */
+  .impact-list {
+    max-width: 860px;
+  }
+
+  .impact-item {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding: 1.4rem 1.5rem !important;
+    align-items: start !important;
+  }
+
+  .impact-metric {
+    display: none !important;
+  }
+
+  .impact-item > div:last-child {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .impact-detail-title {
+    margin-bottom: 0.55rem !important;
+  }
+
+  .impact-detail-desc {
+    max-width: 62ch;
+    font-size: 0.92rem !important;
+    line-height: 1.75 !important;
+  }
+
+  .impact-detail-org {
+    margin-top: 0.7rem !important;
+  }
+
+  .impact-case-link {
+    margin-top: 0.85rem !important;
+    display: inline-flex !important;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 960px) {
+    .impact-layout {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+
+    .impact-list {
+      max-width: 100%;
+    }
+
+    .impact-item {
+      padding: 1.2rem 1.15rem !important;
+    }
+
+    .impact-detail-desc {
+      max-width: 100%;
+      font-size: 0.9rem !important;
+      line-height: 1.72 !important;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .impact-item {
+      padding: 1rem 1rem !important;
+    }
+
+    .impact-detail-title {
+      font-size: 0.78rem !important;
+      line-height: 1.45 !important;
+    }
+
+    .impact-detail-desc {
+      font-size: 0.88rem !important;
+      line-height: 1.68 !important;
+    }
+
+    .impact-detail-org,
+    .impact-case-link {
+      font-size: 0.66rem !important;
+      line-height: 1.5 !important;
+    }
+  }
+</style>
+
+
+<style id="cta-line-fix">
+  .impact-case-link {
+    display: block !important;
+    margin-top: 1rem !important;
+  }
 </style>
 
 </head>
@@ -2541,28 +2615,28 @@ document.addEventListener('DOMContentLoaded', function () {
         </p>
 </div>
 <div class="impact-list">
-<div class="impact-item is-linked" data-card-link="https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=sharing">
-<div class="impact-metric" data-impact-metric="true">93%</div>
+<div class="impact-item">
+<div class="impact-metric" data-impact-metric="true"></div>
 <div>
-<div class="impact-detail-title">Onboarding Satisfaction Score</div>
+<div class="impact-detail-title">Enterprise Onboarding Transformation</div>
 <div class="impact-detail-desc">Built the company’s first enterprise-wide onboarding program in its 25-year history, designed to support a distributed, multi-brand care network with diverse user personas and distinct onboarding needs across remote, hybrid, and in-person environments. Delivered 100% workflow completion and a measurable reduction in early attrition.</div>
-<span class="impact-detail-org">Healthcare · Enterprise Program Build</span>
-<a class="impact-case-link" href="#" onclick="openModal(); return false;" target="_blank" rel="noopener noreferrer">See How It Was Built →</a></div>
+<span class="impact-detail-org">Healthcare</span>
+<a class="impact-case-link" href="#" onclick="openOnboardingModal(); return false;">See How It Was Built →</a></div>
 </div>
 <div class="impact-item">
-<div class="impact-metric" data-impact-metric="true">95%</div>
+<div class="impact-metric" data-impact-metric="true"></div>
 <div>
-<div class="impact-detail-title">Platform Adoption Rate</div>
-<div class="impact-detail-desc">Led employee listening strategy and Culture Amp implementation, using AI-driven analytics to surface predictive engagement insights and enable more informed leadership decision-making. Achieved near-full adoption across the organization.</div>
-<span class="impact-detail-org">Tech · Listening and Engagement Infrastructure</span>
-<a class="impact-case-link" href="#">See How It Was Built →</a></div>
+<div class="impact-detail-title">AI-Enabled Employee Listening System</div>
+<div class="impact-detail-desc">Migrated the organization from a basic pulse tool to a full listening infrastructure at a Series D startup scaling through two acquisitions. Designed the complete survey suite from scratch, including eNPS, onboarding, offboarding, and manager effectiveness. Partnered with HRBPs to deliver segmented insights by business unit. Enabled leadership to act on predictive engagement data for the first time.</div>
+<span class="impact-detail-org">Tech</span>
+<a class="impact-case-link" href="#" onclick="openProtectedWithTitle('https://drive.google.com/file/d/1kIJ7RdH0DTQhILPNvOF4jxhfRh2w-BXA/view?usp=sharing', 'AI Enabled Employee Listening'); return false;">See How It Was Built →</a></div>
 </div>
 <div class="impact-item">
-<div class="impact-metric" data-impact-metric="true">2 of 2</div>
+<div class="impact-metric" data-impact-metric="true"></div>
 <div>
-<div class="impact-detail-title">Performance Systems Built and Transformed</div>
+<div class="impact-detail-title">Enterprise Performance System Design</div>
 <div class="impact-detail-desc">Designed and operationalized end-to-end performance management infrastructure across two organizations, including one greenfield build and one full-scale transformation of an existing system. Scope included goal-setting, calibration, talent review, and 9-box assessment.</div>
-<span class="impact-detail-org">Greenfield Build · Enterprise Transformation</span>
+<span class="impact-detail-org">Energy</span>
 <a class="impact-case-link" href="#">See How It Was Built →</a></div>
 </div>
 </div>
@@ -3316,7 +3390,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div id="caseStudyModal" class="case-lock-overlay" aria-hidden="true">
   <div class="case-lock-card" role="dialog" aria-modal="true" aria-labelledby="caseLockTitle">
     <div class="case-lock-kicker">Protected case study access</div>
-    <p class="case-lock-study-name updated-study-name">Enterprise Onboarding Experience</p>
+    <p class="case-lock-study-name updated-study-name"><span id="dynamicCaseTitle"><span id="caseStudyName">Enterprise Onboarding Experience</span></span></p>
     <p class="case-lock-copy">This work is password-protected to safeguard confidential details and original thinking. The password is included on my resume.</p>
     <input type="password" id="casePassword" class="case-lock-input" placeholder="Enter password" />
     <span id="errorMsg" class="case-lock-error"></span>
@@ -3491,6 +3565,75 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+</script>
+
+
+<script>
+function openProtected(url){
+  var p = prompt("Enter password");
+  if(p === "Duverne2026"){
+    window.open(url, "_blank");
+  }
+  return false;
+}
+</script>
+
+
+<script>
+function openProtectedWithTitle(url, title){
+  var el = document.getElementById("dynamicCaseTitle");
+  if(el){ el.textContent = title; }
+  var modal = document.getElementById("caseStudyModal");
+  if(modal){
+    modal.classList.add("is-active");
+    modal.setAttribute("aria-hidden", "false");
+  }
+  window._caseUrl = url;
+}
+
+function unlockCaseStudy(){
+  var input = document.getElementById("casePassword");
+  var val = input ? input.value : "";
+  if(val === "Duverne2026"){
+    window.open(window._caseUrl, "_blank");
+  } else {
+    document.getElementById("errorMsg").textContent = "Incorrect password.";
+  }
+}
+</script>
+
+
+<script>
+function openProtectedOnboarding(){
+  var p = prompt("Enter password");
+  if(p === "Duverne2026"){
+    window.open('https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=drive_link', "_blank");
+  }
+  return false;
+}
+</script>
+
+
+<script>
+let currentUrl = "https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=drive_link";
+function openOnboardingModal() {
+  const modal = document.getElementById("caseStudyModal");
+  const title = document.getElementById("caseStudyName");
+  if(title) title.textContent = "Enterprise Onboarding Experience";
+  if(modal){
+    modal.classList.add("is-active");
+    modal.setAttribute("aria-hidden","false");
+  }
+}
+
+function unlockCaseStudy() {
+  const input = document.getElementById("casePassword");
+  if(input && input.value === "Duverne2026") {
+    window.open(currentUrl, "_blank");
+  } else {
+    document.getElementById("errorMsg").textContent = "Incorrect password.";
+  }
+}
 </script>
 
 </body>
