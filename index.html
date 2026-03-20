@@ -2621,7 +2621,7 @@ letter-spacing:.04em;
 <div class="impact-detail-title">Enterprise Onboarding Transformation</div>
 <div class="impact-detail-desc">Built the company’s first enterprise-wide onboarding program in its 25-year history, designed to support a distributed, multi-brand care network with diverse user personas and distinct onboarding needs across remote, hybrid, and in-person environments. Delivered 100% workflow completion and a measurable reduction in early attrition.</div>
 <span class="impact-detail-org">Healthcare</span>
-<a class="impact-case-link" href="#" onclick="openOnboardingModal(); return false;">See How It Was Built →</a></div>
+<a class="impact-case-link" href="#" onclick="openCaseStudyModal('Enterprise Onboarding Experience', 'https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=drive_link'); return false;">See How It Was Built →</a></div>
 </div>
 <div class="impact-item">
 <div class="impact-metric" data-impact-metric="true"></div>
@@ -2629,7 +2629,7 @@ letter-spacing:.04em;
 <div class="impact-detail-title">AI-Enabled Employee Listening System</div>
 <div class="impact-detail-desc">Migrated the organization from a basic pulse tool to a full listening infrastructure at a Series D startup scaling through two acquisitions. Designed the complete survey suite from scratch, including eNPS, onboarding, offboarding, and manager effectiveness. Partnered with HRBPs to deliver segmented insights by business unit. Enabled leadership to act on predictive engagement data for the first time.</div>
 <span class="impact-detail-org">Tech</span>
-<a class="impact-case-link" href="#" onclick="openProtectedWithTitle('https://drive.google.com/file/d/1kIJ7RdH0DTQhILPNvOF4jxhfRh2w-BXA/view?usp=sharing', 'AI Enabled Employee Listening'); return false;">See How It Was Built →</a></div>
+<a class="impact-case-link" href="#" onclick="openCaseStudyModal('AI Enabled Employee Listening', 'https://drive.google.com/file/d/1kIJ7RdH0DTQhILPNvOF4jxhfRh2w-BXA/view?usp=sharing'); return false;">See How It Was Built →</a></div>
 </div>
 <div class="impact-item">
 <div class="impact-metric" data-impact-metric="true"></div>
@@ -3390,7 +3390,7 @@ letter-spacing:.04em;
 <div id="caseStudyModal" class="case-lock-overlay" aria-hidden="true">
   <div class="case-lock-card" role="dialog" aria-modal="true" aria-labelledby="caseLockTitle">
     <div class="case-lock-kicker">Protected case study access</div>
-    <p class="case-lock-study-name updated-study-name"><span id="dynamicCaseTitle"><span id="caseStudyName">Enterprise Onboarding Experience</span></span></p>
+    <p class="case-lock-study-name updated-study-name"><span id="caseStudyName">Enterprise Onboarding Experience</span></p>
     <p class="case-lock-copy">This work is password-protected to safeguard confidential details and original thinking. The password is included on my resume.</p>
     <input type="password" id="casePassword" class="case-lock-input" placeholder="Enter password" />
     <span id="errorMsg" class="case-lock-error"></span>
@@ -3507,29 +3507,44 @@ letter-spacing:.04em;
 
 </style>
 
-<script>
-const CASE_URL = "https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=sharing";
-const PASSWORD = "Duverne2026";
 
-function openModal() {
+<script id="case-study-modal-controller">
+const CASE_STUDY_PASSWORD = "Duverne2026";
+let activeCaseStudyUrl = "https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=drive_link";
+
+function openCaseStudyModal(title, url) {
   const modal = document.getElementById("caseStudyModal");
   const error = document.getElementById("errorMsg");
   const input = document.getElementById("casePassword");
+  const titleNode = document.getElementById("caseStudyName");
+
+  activeCaseStudyUrl = url;
+  if (titleNode) titleNode.textContent = title;
   if (error) error.textContent = "";
   if (input) input.value = "";
-  modal.classList.add("is-active");
-  modal.setAttribute("aria-hidden", "false");
-  setTimeout(() => { if (input) input.focus(); }, 20);
+
+  if (modal) {
+    modal.classList.add("is-active");
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  setTimeout(() => {
+    if (input) input.focus();
+  }, 20);
 }
 
 function closeCaseStudyModal() {
   const modal = document.getElementById("caseStudyModal");
   const error = document.getElementById("errorMsg");
   const input = document.getElementById("casePassword");
+
   if (error) error.textContent = "";
   if (input) input.value = "";
-  modal.classList.remove("is-active");
-  modal.setAttribute("aria-hidden", "true");
+
+  if (modal) {
+    modal.classList.remove("is-active");
+    modal.setAttribute("aria-hidden", "true");
+  }
 }
 
 function unlockCaseStudy() {
@@ -3537,9 +3552,10 @@ function unlockCaseStudy() {
   const error = document.getElementById("errorMsg");
   const value = input ? input.value : "";
 
-  if (value === PASSWORD) {
+  if (value === CASE_STUDY_PASSWORD) {
+    const url = activeCaseStudyUrl;
     closeCaseStudyModal();
-    window.open(CASE_URL, "_blank", "noopener,noreferrer");
+    window.open(url, "_blank", "noopener,noreferrer");
   } else {
     if (error) error.textContent = "Incorrect password. Please use the access code listed on my resume.";
   }
@@ -3548,93 +3564,27 @@ function unlockCaseStudy() {
 document.addEventListener("DOMContentLoaded", function () {
   const caseInput = document.getElementById("casePassword");
   const modal = document.getElementById("caseStudyModal");
+
   if (caseInput) {
     caseInput.addEventListener("keydown", function (event) {
       if (event.key === "Enter") unlockCaseStudy();
     });
   }
+
   if (modal) {
     modal.addEventListener("click", function (event) {
       if (event.target === modal) closeCaseStudyModal();
     });
   }
+
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && modal && modal.classList.contains("is-active")) {
       closeCaseStudyModal();
     }
   });
 });
-
 </script>
 
-
-<script>
-function openProtected(url){
-  var p = prompt("Enter password");
-  if(p === "Duverne2026"){
-    window.open(url, "_blank");
-  }
-  return false;
-}
-</script>
-
-
-<script>
-function openProtectedWithTitle(url, title){
-  var el = document.getElementById("dynamicCaseTitle");
-  if(el){ el.textContent = title; }
-  var modal = document.getElementById("caseStudyModal");
-  if(modal){
-    modal.classList.add("is-active");
-    modal.setAttribute("aria-hidden", "false");
-  }
-  window._caseUrl = url;
-}
-
-function unlockCaseStudy(){
-  var input = document.getElementById("casePassword");
-  var val = input ? input.value : "";
-  if(val === "Duverne2026"){
-    window.open(window._caseUrl, "_blank");
-  } else {
-    document.getElementById("errorMsg").textContent = "Incorrect password.";
-  }
-}
-</script>
-
-
-<script>
-function openProtectedOnboarding(){
-  var p = prompt("Enter password");
-  if(p === "Duverne2026"){
-    window.open('https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=drive_link', "_blank");
-  }
-  return false;
-}
-</script>
-
-
-<script>
-let currentUrl = "https://drive.google.com/file/d/1zBh3-MgbUVIkCEXdTVer2vXgKznhisK6/view?usp=drive_link";
-function openOnboardingModal() {
-  const modal = document.getElementById("caseStudyModal");
-  const title = document.getElementById("caseStudyName");
-  if(title) title.textContent = "Enterprise Onboarding Experience";
-  if(modal){
-    modal.classList.add("is-active");
-    modal.setAttribute("aria-hidden","false");
-  }
-}
-
-function unlockCaseStudy() {
-  const input = document.getElementById("casePassword");
-  if(input && input.value === "Duverne2026") {
-    window.open(currentUrl, "_blank");
-  } else {
-    document.getElementById("errorMsg").textContent = "Incorrect password.";
-  }
-}
-</script>
 
 </body>
 </html>
