@@ -2801,12 +2801,14 @@ a.template-card:hover .template-name {
   font-size: 0.96rem;
   line-height: 1.85;
   color: var(--muted);
+  text-align: left;
 }
 @media (max-width: 960px){
   .templates-intro{
     margin: -0.5rem 0 1.5rem 0;
     font-size: 0.92rem;
     line-height: 1.8;
+    text-align: left;
   }
 }
 
@@ -2913,6 +2915,333 @@ a.template-card:hover .template-name {
     }
   }
 </style>
+
+<style id="templates-structured-refresh">
+.templates-featured{margin:2.25rem 0 2.75rem;}
+.templates-featured-header{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.templates-kicker{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--blush);}
+.templates-featured-copy{max-width:54ch;font-size:.84rem;line-height:1.7;color:var(--muted);}
+.templates-featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}
+.template-card-featured{border:1px solid rgba(232,216,220,.95);box-shadow:0 14px 34px rgba(24,10,16,.04);}
+
+.templates-controls{
+  display:flex;
+  gap:.75rem;
+  margin:-.2rem 0 1.5rem 0;
+}
+.templates-control-btn{
+  appearance:none;
+  border:1px solid rgba(106,154,120,.34);
+  background:rgba(106,154,120,.12);
+  color:#587a64;
+  border-radius:999px;
+  padding:.58rem 1rem;
+  font-size:.68rem;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease;
+}
+.templates-control-btn:hover{
+  background:rgba(106,154,120,.18);
+  border-color:rgba(106,154,120,.5);
+  color:#4f705a;
+  transform:translateY(-1px);
+}
+
+.templates-category-list{display:grid;gap:1rem;}
+.template-category{
+  background:linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(106,154,120,.08) 42%, rgba(160,96,112,.08) 100%);
+  border:1px solid rgba(232,216,220,.95);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(24,10,16,.03);
+}
+.template-category summary{
+  list-style:none;
+  display:grid;
+  grid-template-columns:minmax(340px, 1.2fr) minmax(260px, .78fr) 34px;
+  align-items:center;
+  column-gap:2rem;
+  padding:1.35rem 1.5rem;
+  cursor:pointer;
+  transition:background .2s ease;
+}
+.template-category summary:hover{background:rgba(255,255,255,.28);}
+.template-category summary::-webkit-details-marker{display:none;}
+.template-category summary::after{
+  content:"⌄";
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(232,216,220,.95);
+  color:var(--merlot);
+  font-size:1.05rem;
+  line-height:1;
+  box-shadow:0 6px 16px rgba(24,10,16,.05);
+  transition:transform .22s ease, background .22s ease, box-shadow .22s ease;
+}
+.template-category[open] summary::after{transform:rotate(180deg);}
+.template-category summary:hover::after{
+  background:white;
+  box-shadow:0 10px 18px rgba(24,10,16,.08);
+}
+.template-category summary > div:first-child{min-width:0;}
+.template-category summary h3{
+  font-family:var(--serif);
+  font-size:1.35rem;
+  font-weight:400;
+  line-height:1.15;
+  color:var(--ink);
+}
+.template-category summary p{
+  margin:0;
+  max-width:24ch;
+  justify-self:start;
+  align-self:center;
+  text-align:left;
+  text-wrap:balance;
+  font-size:.88rem;
+  line-height:1.55;
+  letter-spacing:.01em;
+  color:var(--muted);
+}
+.template-category summary p.template-summary-spacer{
+  max-width:none;
+  width:100%;
+  min-height:1px;
+  visibility:hidden;
+}
+.template-category-eyebrow{
+  display:block;
+  margin-bottom:.45rem;
+  font-size:.68rem;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--blush);
+}
+.template-category-panel{
+  padding:1.15rem 1.15rem 1.15rem;
+  border-top:1px solid rgba(232,216,220,.78);
+  background:linear-gradient(180deg, rgba(255,255,255,.44), rgba(255,255,255,.26));
+}
+.templates-grid-structured{
+  padding-top:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+}
+.template-card,
+.template-card-static{
+  position:relative;
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr);
+  align-items:start;
+  gap:1rem;
+  padding:1.15rem 1.15rem 1rem;
+  border:1px solid rgba(232,216,220,.92);
+  border-radius:14px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  min-height:unset;
+  box-shadow:0 10px 24px rgba(24,10,16,.035);
+}
+.template-card-static{opacity:1 !important;cursor:default;}
+.template-card-static:hover{transform:none !important;box-shadow:0 10px 24px rgba(24,10,16,.035) !important;background:rgba(255,255,255,.82) !important;}
+.template-icon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:linear-gradient(135deg, rgba(106,154,120,.12), rgba(160,96,112,.10));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.template-info{
+  min-width:0;
+  display:block;
+}
+.template-name{
+  font-size:1.03rem;
+  font-weight:500;
+  line-height:1.45;
+  margin-bottom:.4rem;
+ display:block; max-width:85%; line-height:1.3;}
+.template-desc{
+  max-width:40ch;
+  font-size:.84rem;
+  line-height:1.7;
+  color:var(--muted);
+  margin-bottom:.8rem;
+ margin-top:.35rem;}
+.template-tags{
+  display:flex;
+  gap:.45rem;
+  flex-wrap:wrap;
+  margin-top:0;
+}
+.template-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:.22rem .58rem;
+  border-radius:999px;
+  background:rgba(160,96,112,.08);
+  font-size:.6rem;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--merlot);
+}
+.template-status,.template-dl{
+  position:absolute;
+  top:1.15rem;
+  right:1.15rem;
+  font-size:.66rem;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--sage);
+  white-space:nowrap;
+ right:1rem; top:1rem;}
+.template-dl{color:var(--blush);}
+@media (max-width: 1100px){
+  .templates-featured-grid{grid-template-columns:1fr;}
+  .templates-grid-structured{grid-template-columns:1fr;}
+  .template-category summary{
+    grid-template-columns:1fr 34px;
+    align-items:start;
+    row-gap:.6rem;
+  }
+  .template-category summary > div:first-child{grid-column:1 / 2;}
+  .template-category summary p{
+    grid-column:1 / 2;
+    justify-self:start;
+    text-align:left;
+    max-width:34ch;
+  }
+  .template-category summary p.template-summary-spacer{display:none;}
+  .template-category summary::after{
+    grid-column:2 / 3;
+    grid-row:1 / span 2;
+    align-self:center;
+    justify-self:end;
+  }
+}
+@media (max-width: 700px){
+  .templates-controls{flex-wrap:wrap;margin:-.2rem 0 1.2rem 0;}
+  .template-category summary{padding:1.1rem 1rem;}
+  .template-category-panel{padding:1rem;}
+  .template-category summary h3{font-size:1.2rem;}
+  .template-card,
+  .template-card-static{
+    grid-template-columns:1fr;
+    gap:.85rem;
+    padding:1rem;
+  }
+  .template-status,.template-dl{
+    position:static;
+    display:inline-flex;
+    margin-top:.2rem;
+   right:1rem; top:1rem;}
+  .template-desc{max-width:none; margin-top:.35rem;}
+}
+</style>
+
+
+<style id="final-site-optimization">
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  img, svg, video, canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .section-inner,
+  .hero-left,
+  .hero-right,
+  .template-info,
+  .work-card,
+  .impact-item,
+  .technology-card,
+  .timeline-item {
+    min-width: 0;
+  }
+
+  .template-name,
+  .template-desc,
+  .impact-detail-desc,
+  .work-card-title,
+  .work-card-desc,
+  .timeline-role,
+  .contact-copy,
+  .technology-intro,
+  .templates-intro {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .templates-grid,
+  .templates-grid-structured,
+  .technology-grid,
+  .work-grid,
+  .impact-layout,
+  .about-layout {
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px) {
+    .section-inner {
+      width: 100%;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    .template-card,
+    .template-card-static {
+      width: 100%;
+    }
+
+    .template-status,
+    .template-dl {
+      white-space: nowrap;
+    }
+
+    .templates-control-btn {
+      width: auto;
+      min-height: 40px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .templates-intro {
+      max-width: 100% !important;
+    }
+
+    .template-card,
+    .template-card-static,
+    .technology-card,
+    .work-card,
+    .impact-item {
+      border-radius: 12px;
+    }
+  }
+</style>
+
 </head>
 <body>
 <!-- NAV -->
@@ -3058,26 +3387,181 @@ a.template-card:hover .template-name {
 <span class="section-num">02 —</span>
 <h2 class="section-title">Tools &amp; Templates</h2>
 <div class="section-rule"></div>
-<p class="templates-intro">Practical tools built from real-world application — designed to help leaders operationalize onboarding, elevate talent conversations, and drive organizational effectiveness. Each template reflects systems I’ve implemented at scale.</p>
 </div>
-<div class="templates-grid">
-<a class="template-card" href="https://drive.google.com/file/d/1ULdB-y0ImRun_VFggHeiauHgx8Ejy9hc/view?usp=drive_link" rel="noopener noreferrer" target="_blank">
-<div class="template-icon"><svg viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect height="4" rx="1" width="6" x="9" y="3"></rect><line x1="9" x2="15" y1="12" y2="12"></line><line x1="9" x2="13" y1="16" y2="16"></line></svg></div>
+<p class="templates-intro">A curated library of frameworks, guides, and planning tools for HR leaders.</p>
+<div class="templates-controls"><button class="templates-control-btn" type="button" onclick="openAllTemplateCategories()">Open All</button><button class="templates-control-btn" type="button" onclick="collapseAllTemplateCategories()">Collapse All</button></div>
+
+<div class="templates-category-list">
+  <details class="template-category" open>
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">01</span>
+        <h3>Talent Strategy &amp; Operating Model</h3>
+      </div>
+      <p>Designing the infrastructure behind modern talent systems.</p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1rZIe9UW31M-5d54gbuTw4r9Wds7JJvADhWiX5_D-IoE/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Talent Operating Model</div><div class="template-desc">A blueprint for how talent programs, governance, decision rights, and operating rhythms come together across the employee lifecycle.</div><div class="template-tags"><span class="template-tag">Operating Model</span><span class="template-tag">Governance</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1wEl5OQL0DOG9VdoaX43b2f5G_fIUCzsS6cZREw_ygT4/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">PM Philosophy Template</div><div class="template-desc">A leadership-facing template to define the core principles, experience goals, and system design choices behind a performance management model.</div><div class="template-tags"><span class="template-tag">Philosophy</span><span class="template-tag">System Design</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1phAMgZtkIJBlKYU-yUZ6hc5tyIthJJA-IH8meI0ZG10/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Employee Listening Architecture</div><div class="template-desc">A structured approach to employee listening that connects survey moments, feedback loops, action planning, and leadership visibility.</div><div class="template-tags"><span class="template-tag">Listening</span><span class="template-tag">Experience</span></div></div><span class="template-status">↓ Open</span></a>
+      
+<a class="template-card template-card-static" href="https://drive.google.com/file/d/1PKiKVUY9rbMR3o9nDEHp4PO1XZYp7FAh/view?usp=drive_link" rel="noopener noreferrer" target="_blank">
+<div class="template-icon">📁</div>
 <div class="template-info">
-<div class="template-name">30-60-90 Day Leader Onboarding Plan</div>
-<div class="template-desc">Milestone-based onboarding template for new leaders, with check-in structure and early-win framework.</div>
+<div class="template-name">Talent Management Practitioner Guide</div>
+<div class="template-desc">A practical guide for HR and talent practitioners to design, operationalize, and scale core talent programs across the employee lifecycle.</div>
+<div class="template-tags">
+<span class="template-tag">Talent Management</span>
+<span class="template-tag">Practitioner Guide</span>
 </div>
-<span class="template-dl">↓ Get</span>
+</div>
+<span class="template-status">↓ Open</span>
 </a>
-<a class="template-card" href="https://drive.google.com/file/d/1YPkKFTH_HXrFBBx7wTqZj1AlvdDPMf3C/view?usp=drive_link" rel="noopener noreferrer" target="_blank">
-<div class="template-icon"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" fill="var(--merlot)" r="1"></circle><line x1="12" x2="12" y1="3" y2="6"></line><line x1="12" x2="12" y1="18" y2="21"></line></svg></div>
+
+        <a class="template-card" href="https://drive.google.com/file/d/1_C_DwVx2S4m6HBisGOcxFbcdBUpqV_Y-/view?usp=sharing" rel="noopener noreferrer" target="_blank"><div class="template-icon">📄</div><div class="template-info"><div class="template-name">Capability Needs Assessment</div><div class="template-desc">A structured framework to identify capability gaps across roles and align development priorities to business strategy.</div><div class="template-tags"><span class="template-tag">Capabilities</span><span class="template-tag">Assessment</span></div></div><span class="template-dl">↓ Open</span></a></div>
+    </div>
+  </details>
+
+  <details class="template-category">
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">02</span>
+        <h3>Performance &amp; Calibration</h3>
+      </div>
+      <p>Driving fair, consistent, and data-backed talent decisions.</p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1b8QcuG76uYVKfjc4HzqgUVbUdMR87uSuuxItA-dq7VY/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Calibration Rubric</div><div class="template-desc">A scoring and discussion framework to improve consistency in manager judgment and talent review outcomes.</div><div class="template-tags"><span class="template-tag">Rubric</span><span class="template-tag">Calibration</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card template-card-static" href="https://docs.google.com/spreadsheets/d/1L0N0uXp4rlZiaAcMvGRoLrwb1y3kIPHXnv_xvuWGAas/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Merit Increase Calculator</div><div class="template-desc">A compensation-planning tool to support structured merit decisions with clearer tradeoffs and budget visibility.</div><div class="template-tags"><span class="template-tag">Compensation</span><span class="template-tag">Analytics</span></div></div><span class="template-status">↓ Open</span></a>
+      
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1oD1VTWqJk8A7BsI3HeAXaTeJ-zhGq0uYbUwvf59F5Cg/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">9-Box Facilitation Guide</div><div class="template-desc">A facilitation guide for running stronger 9-box conversations with better calibration, clearer evidence, and less ambiguity.</div><div class="template-tags"><span class="template-tag">9-Box</span><span class="template-tag">Facilitation</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card" href="https://drive.google.com/file/d/1IY2C3JbNj3YHWjSNSHtgTGO96wOlvYSo/view?usp=drive_link" rel="noopener noreferrer" target="_blank">
+      <div class="template-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="13" y2="16"></line></svg></div>
+      <div class="template-info">
+        <div class="template-name">Talent Review Calibration Guide</div>
+        <div class="template-desc">A practical guide to run consistent, bias-aware talent reviews and calibrate performance and potential across teams.</div>
+        <div class="template-tags"><span class="template-tag">Calibration</span><span class="template-tag">Performance</span><span class="template-tag">Leadership</span></div>
+      </div>
+      <span class="template-dl">↓ Open</span>
+    </a></div>
+    </div>
+  </details>
+
+  <details class="template-category">
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">03</span>
+        <h3>Career &amp; Development Frameworks</h3>
+      </div>
+      <p>Creating clarity around growth, progression, and talent acceleration.</p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1ZcGYG7bugNUytRENlPvcP1jeeWd6OiY5B2EMu0W_9HQ/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Career Architecture Framework</div><div class="template-desc">A framework for defining role progression, growth paths, and development expectations across levels.</div><div class="template-tags"><span class="template-tag">Career Architecture</span><span class="template-tag">Growth</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1fTbabGCpD5rPQjbn7hcN_PDDQV4H-TnbGXOXtQADqP4/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Starter Competency Framework (Facilitation Tool)</div><div class="template-desc">A practical facilitation tool to guide competency design sessions, align stakeholders, and define role expectations across levels.</div><div class="template-tags"><span class="template-tag">Competencies</span><span class="template-tag">Design</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1Okl480yR_XIJMEayIW4pal5bZG95MdtvWWtoTIdvKr4/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">HiPo Assessment Framework</div><div class="template-desc">A structured approach to assessing high-potential talent with clearer signals, guardrails, and development implications.</div><div class="template-tags"><span class="template-tag">HiPo</span><span class="template-tag">Assessment</span></div></div><span class="template-status">↓ Open</span></a>
+      
+<a class="template-card template-card-static" href="https://drive.google.com/file/d/1YPkKFTH_HXrFBBx7wTqZj1AlvdDPMf3C/view" rel="noopener noreferrer" target="_blank">
+<div class="template-icon">📁</div>
 <div class="template-info">
-<div class="template-name">Competency Framework Builder</div>
-<div class="template-desc">Role-level competency rubric adaptable across functions and career levels — from IC to VP.</div>
+<div class="template-name">Competency Framework GUIDE</div>
+<div class="template-desc">A comprehensive competency framework reference outlining role expectations, behaviors, and proficiency levels across functions.</div>
+<div class="template-tags">
+<span class="template-tag">Competencies</span>
+<span class="template-tag">Framework</span>
 </div>
-<span class="template-dl">↓ Get</span>
+</div>
+<span class="template-status">↓ Get</span>
 </a>
-<a class="template-card" href="https://drive.google.com/file/d/1_C_DwVx2S4m6HBisGOcxFbcdBUpqV_Y-/view?usp=sharing" target="_blank"><div class="template-icon">📄</div><div class="template-info"><div class="template-name">Capability Needs Assessment</div><div class="template-desc">A structured framework to identify capability gaps across roles and align development priorities to business strategy.</div></div><span class="template-dl">↓ Get</span></a><a class="template-card" href="https://drive.google.com/file/d/1IY2C3JbNj3YHWjSNSHtgTGO96wOlvYSo/view?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📄</div><div class="template-info"><div class="template-name">Talent Review Calibration Guide</div><div class="template-desc">A practical guide to run consistent, bias-aware talent reviews and calibrate performance and potential across teams.</div></div><span class="template-dl">↓ Get</span></a><a class="template-card" href="https://drive.google.com/file/d/1WyBWClapRZExhxgirQ-4OBvbku-Io7HT/view?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon"><svg viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></div><div class="template-info"><div class="template-name">Program &amp; Change Management Framework</div><div class="template-desc">A practical framework for structuring program delivery, stakeholder alignment, communications, and change adoption across complex initiatives.</div></div><span class="template-dl">↓ Get</span></a></div>
+
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1d8dBYVoImJL6QsR6Ju1aIINR9Y2oB23GlOfyzehxthw/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Succession Planning Template</div><div class="template-desc">A practical planning template for critical-role succession, readiness conversations, and risk visibility.</div><div class="template-tags"><span class="template-tag">Succession</span><span class="template-tag">Planning</span></div></div><span class="template-status">↓ Open</span></a></div>
+    </div>
+  </details>
+
+  <details class="template-category">
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">04</span>
+        <h3>Manager Enablement &amp; Coaching</h3>
+      </div>
+      <p>Equipping leaders to lead stronger conversations and better decisions.</p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1APCthwZRViCgR7HeHayduWNGcfJmrlVdToMideP7h6M/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Manager Coaching Guide</div><div class="template-desc">A practical guide for managers navigating feedback, development conversations, and ongoing team coaching.</div><div class="template-tags"><span class="template-tag">Coaching</span><span class="template-tag">Managers</span></div></div><span class="template-status">↓ Open</span></a>
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1hJgOozfyHOKJMlOrebAqKG7vC8UtS4454KsEE1jACjM/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Executive Talking Points Template</div><div class="template-desc">A concise leadership communications template to help executives align messaging across talent initiatives and change moments.</div><div class="template-tags"><span class="template-tag">Executives</span><span class="template-tag">Communications</span></div></div><span class="template-status">↓ Open</span></a>
+      
+        <a class="template-card" href="https://drive.google.com/file/d/1ULdB-y0ImRun_VFggHeiauHgx8Ejy9hc/view?usp=drive_link" rel="noopener noreferrer" target="_blank">
+      <div class="template-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="13" y2="16"></line></svg></div>
+      <div class="template-info">
+        <div class="template-name">30-60-90 Day Leader Onboarding Plan</div>
+        <div class="template-desc">A milestone-based onboarding template for new leaders, with check-in structure, expectation setting, and early-win planning.</div>
+        <div class="template-tags"><span class="template-tag">Onboarding</span><span class="template-tag">Leader Enablement</span><span class="template-tag">Planning</span></div>
+      </div>
+      <span class="template-dl">↓ Open</span>
+    </a></div>
+    </div>
+  </details>
+
+  <details class="template-category">
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">05</span>
+        <h3>Hiring &amp; Workforce Planning</h3>
+      </div>
+      <p>Supporting smarter hiring decisions and workforce design.</p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+<a class="template-card template-card-static" href="https://docs.google.com/document/d/15A8xFZbV7ir_ZJoNnqjGQKFisvO3YWhcSSrIxP3zgkc/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Workforce Planning Template</div><div class="template-desc">A workforce-planning template that connects talent demand, business priorities, org design, and headcount decisions.</div><div class="template-tags"><span class="template-tag">Workforce Planning</span><span class="template-tag">Headcount</span></div></div><span class="template-status">↓ Open</span></a>
+      </div>
+    </div>
+  </details>
+
+  <details class="template-category">
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">06</span>
+        <h3>Analytics &amp; Insights</h3>
+      </div>
+      <p>Measuring talent outcomes and connecting programs to business impact.</p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+        <a class="template-card template-card-static" href="https://docs.google.com/document/d/1JMG0FQY-2XtSNQtP2wwLVuGcqeSc-QqVrPtUSVf58Bk/edit?usp=drive_link" rel="noopener noreferrer" target="_blank"><div class="template-icon">📁</div><div class="template-info"><div class="template-name">Talent Analytics Metrics Guide</div><div class="template-desc">A guide to the metrics, definitions, and signal set leaders can use to evaluate talent health, outcomes, and program effectiveness.</div><div class="template-tags"><span class="template-tag">People Analytics</span><span class="template-tag">Metrics</span></div></div><span class="template-status">↓ Open</span></a>
+      </div>
+    </div>
+  </details>
+
+  <details class="template-category">
+    <summary>
+      <div>
+        <span class="template-category-eyebrow">07</span>
+        <h3>Additional Tools in the Library</h3>
+      </div>
+      <p class="template-summary-spacer" aria-hidden="true"></p>
+    </summary>
+    <div class="template-category-panel">
+      <div class="templates-grid templates-grid-structured">
+        <a class="template-card" href="https://drive.google.com/file/d/1WyBWClapRZExhxgirQ-4OBvbku-Io7HT/view?usp=drive_link" rel="noopener noreferrer" target="_blank">
+      <div class="template-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg></div>
+      <div class="template-info">
+        <div class="template-name">Program &amp; Change Management Framework</div>
+        <div class="template-desc">A practical structure for program delivery, stakeholder alignment, communications, and change adoption across complex initiatives.</div>
+        <div class="template-tags"><span class="template-tag">Strategy</span><span class="template-tag">Change</span><span class="template-tag">Execution</span></div>
+      </div>
+      <span class="template-dl">↓ Open</span>
+    </a>
+        
+        
+        
+        
+      </div>
+    </div>
+  </details>
+</div>
 </div>
 </section>
 <section class="work-section" id="work">
@@ -3972,5 +4456,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+<script>
+function openAllTemplateCategories() {
+  document.querySelectorAll('#templates .template-category').forEach((item) => {
+    item.open = true;
+  });
+}
+function collapseAllTemplateCategories() {
+  document.querySelectorAll('#templates .template-category').forEach((item) => {
+    item.open = false;
+  });
+}
+</script>
+
 </body>
 </html>
